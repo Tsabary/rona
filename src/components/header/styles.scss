@@ -1,0 +1,88 @@
+.header {
+  display: grid;
+  grid-template-columns: min-content 1fr max-content;
+  align-items: center;
+  grid-gap: 8rem;
+  margin-bottom: 5rem;
+
+  &__logo {
+    height: 8rem;
+    width: 8rem;
+    background: url("/imgs/logo.jpg") no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    &-container {
+      display: grid;
+      grid-template-columns: repeat(2, min-content);
+      grid-gap: 3rem;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-main-bold);
+    font-weight: 900;
+    font-size: 4rem;
+    text-align: center;
+    color: var(--color-grey-dark);
+
+    &:hover {
+      color: var(--color-grey-light);
+      cursor: pointer;
+    }
+  }
+
+  &__social {
+    width: 8rem;
+  }
+
+  &__user {
+    position: relative;
+
+    &:hover .header__user-options {
+      opacity: 1;
+      visibility: visible;
+    }
+    &-options {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      width: max-content;
+      right: 0;
+      transition: all 0.2s;
+      background-color: white;
+      margin-top: 1rem;
+      display: grid;
+      grid-gap: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 0.4rem 1.4rem rgb(210, 210, 210);
+    }
+
+    &-name {
+      text-align: end;
+      margin-top: 1.8rem;
+      margin: auto;
+    }
+    &-option {
+      margin-top: 1rem;
+      text-align: end;
+      width: max-content;
+
+      &:hover ~ .header__user-option {
+        opacity: 1;
+        visibility: visible;
+      }
+      &:hover {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  &__logged-out {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-gap: 3rem;
+    width: max-content;
+    align-items: center;
+  }
+}

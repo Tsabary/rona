@@ -1,0 +1,19 @@
+.boxed-button {
+  height: min-content;
+  width: max-content;
+  font-size: 1.8rem;
+  font-family: var(--font-main);
+  user-select: none;
+  background: var(--color-gradient);
+  color: white;
+  padding: 1.5rem 5rem 1.7rem 5rem;
+  border-radius: 5rem;
+  box-shadow: 0 0.2rem 1rem rgb(170, 170, 170);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1.4rem rgb(170, 170, 170);
+  }
+}

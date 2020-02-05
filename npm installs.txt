@@ -1,0 +1,27 @@
+npm install -s react-redux redux redux-thunk node-sass firebase react-router-dom styled-components draft-js js-cookie react-highlight-words
+
+How to allow the cloud function to read the new file url:
+
+1. go to the 'iam' api in the google developers console, for this specific project. A link will show in the cloud functions log after a failed attempt prior to enabling.
+A sample link would look something like this:
+https://console.developers.google.com/apis/api/iam.googleapis.com/overview?project=550178105554
+
+2. Enable.
+
+3. go to the IAM tab on the left, and look for "App Engine default service account". Click on the edit pencil on it's right.
+
+4. Click add another role
+
+5. Add Service managment -> Cloud functions service agent
+
+6. Save
+
+
+How to allow for the places look up
+
+1. npm install react-places-autocomplete
+2. Enable the Maps JavaScript API
+3. Go to credentials and pick up the browser api key
+4. place this in the public index file:
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+5. Enable the places API for the project? Not sure, try without.

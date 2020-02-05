@@ -1,0 +1,15 @@
+.radio-field {
+  position: relative;
+  margin-right: 4rem;
+  &__label {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+  }
+  &__text {
+    font-family: GilroyLight;
+    font-size: 1.6rem;
+    user-select: none;
+    cursor: pointer;
+  }
+}

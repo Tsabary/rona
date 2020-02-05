@@ -1,0 +1,36 @@
+.toggle-button {
+  display: flex;
+
+  &__checkbox {
+    visibility: hidden;
+    opacity: 0;
+
+    &:checked + .toggle-button__label #component {
+      background-color: var(--color-main);
+      &::before {
+        transform: translateX(3rem);
+      }
+    }
+  }
+
+  &__component {
+    width: 6rem;
+    height: 3rem;
+    background-color: white;
+    box-shadow: 0 0.2rem 1rem rgba(149, 146, 187, 0.205);
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: all 0.4s;
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 2.4rem;
+      width: 2.4rem;
+      margin: 0.3rem auto 0.3rem 0.3rem;
+      transition: all 0.4s;
+      border-radius: 5rem;
+      background-color: white;
+      box-shadow: 0 0.2rem 3rem rgb(216, 216, 216);
+    }
+  }
+}

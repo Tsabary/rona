@@ -1,0 +1,26 @@
+.date-input {
+    width: min-content;
+    height: min-content;
+    display: grid;
+    grid-template-columns:repeat(2, min-content);
+    grid-gap: 1rem;
+    font-family: GilroyLight, Arimo;
+    font-size: 1.6rem;
+    margin-top: 3rem;
+    padding: 1.7rem 3rem;
+    outline: none;
+    border: none;
+    background-color: white;
+    box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
+    border-radius: 3rem;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &__component{
+
+      margin-top: 1rem;
+      // border: none;
+      // outline: none;
+      // background-color: goldenrod;
+    }
+}

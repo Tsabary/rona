@@ -1,0 +1,16 @@
+.toggle-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+
+  &__text {
+    font-size: 1.6rem;
+    margin-right: 2rem;
+    user-select: none;
+    cursor: pointer;
+    &:hover{
+      color: var(--color-main);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.contact{
+    &__social{
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: repeat(2, min-content);
+    }
+    &__icon{
+        height: 4rem;
+        width: 4rem;
+        cursor: pointer;
+        &--facebook{
+            :hover{
+                fill: #3b5998 ;
+            }
+        }
+        &--instagram{
+            :hover{
+                fill: #f2003c ;
+            }
+        }
+    }
+}

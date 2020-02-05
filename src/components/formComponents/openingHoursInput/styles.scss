@@ -1,0 +1,36 @@
+.opening-hours {
+  display: grid;
+  grid-template-columns: 3rem repeat(2, 1fr);
+  grid-gap: 2rem;
+  justify-content: start;
+  align-items: center;
+  margin: 2rem 0;
+  &__day {
+    font-size: 1.6rem;
+    color: var(--color-grey-dark);
+  }
+
+  &__pick {
+    display: flex;
+    width: max-content;
+    color: var(--color-grey-light);
+    font-size: 1.6rem;
+    background-color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 0.2rem 1rem var(--color-grey-light);
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+  &__input {
+    max-width: 2rem;
+    outline: none;
+    border: none;
+    &::-webkit-input-placeholder {
+      color: var(--color-grey-light);
+    }
+  }
+  &__input-seperator {
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+  }
+}

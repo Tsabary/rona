@@ -1,0 +1,47 @@
+.text-editor {
+  width: 100%;
+  height: min-content;
+  font-family: GilroyLight, Arimo;
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  padding: 3rem ;
+  outline: none;
+  border: none;
+  background-color: white;
+  box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
+  border-radius: 3rem;
+  display: block;
+
+  input[type="button"] {
+    border: 1px solid #eee;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    padding: 1rem;
+  }
+
+  input[type="button"]:active {
+    transform: scale(0.95);
+  }
+
+  input[type="button"]:not(.active):hover {
+    background-color: #eee;
+  }
+
+  input[type="button"].active {
+    background-color: var(--color-main);
+    color: white;
+    border-color: transparent;
+  }
+}
+
+.public-DraftEditorPlaceholder-inner {
+  position: absolute;
+  color: #ccc;
+  pointer-events: none;
+}
+.public-DraftEditor-content{
+  height: 30rem;
+}

@@ -1,0 +1,42 @@
+.radio-button {
+  position: relative;
+  margin-right: 4rem;
+  &__radio {
+    opacity: 0;
+  }
+
+  &__radio:checked ~ &__label #component::after {
+    opacity: 1;
+  }
+
+  &__button {
+    height: 3rem;
+    width: 3rem;
+    border: 0.5rem solid var(--color-main);
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -.65rem;
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--color-main);
+      opacity: 0;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+  }
+  &__label {
+    // background-color: orangered;
+    display: flex;
+    align-items: center;
+  }
+}

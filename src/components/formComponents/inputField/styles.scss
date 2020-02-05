@@ -1,0 +1,41 @@
+.input-field {
+  &__input {
+    width: 100%;
+    height: min-content;
+    font-family: GilroyLight, Arimo;
+    font-size: 1.6rem;
+    margin-top: 3rem;
+    padding: 1.5rem 3rem;
+    outline: none;
+    border: none;
+    background-color: white;
+    box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
+    border-radius: 3rem;
+    display: block;
+    border-bottom: 2px solid var(--color-main);
+
+    transition: all 0.3s;
+    &::-webkit-input-placeholder {
+      color: var(--color-grey-light);
+    }
+    &:invalid {
+      border-bottom: 2px solid rgb(216, 6, 6);
+    }
+    &:placeholder-shown {
+      border-bottom: 2px solid transparent;
+    }
+  }
+  &__label {
+    font-family: GilroyLight;
+    font-size: 1.2rem;
+    display: block;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    margin-left: 2rem;
+  }
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+}
