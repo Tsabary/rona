@@ -10,26 +10,33 @@ const Feed = ({ items, fetchAllItems }) => {
     fetchAllItems();
   }, []);
 
-  function createMarkup(content) {
+  /* 
+  const  createMarkup = (content) => {
     return { __html: content };
-  }
+  }         
+  <div
+    className="item__detail"
+    dangerouslySetInnerHTML={createMarkup(item.title)}
+  /> */
 
   const renderItems = () => {
-    return items.map(item => {
-      return (
-        <div className="item" key={item.id}>
-          {/* <div className="round-image__container medium-margin-top small-margin-bottom">
-            <img className="round-image" src={member.image} />
-          </div> */}
-          <div className="item__info">
-            <div
-              className="item__detail"
-              dangerouslySetInnerHTML={createMarkup(item.actual_content)}
-            />
+    return items
+      .filter(item => {
+        return item.is_public === true;
+      })
+      .map(item => {
+        return (
+          <div className="item" key={item.id}>
+            <div className="cover-image__container">
+              <img className="cover-image" src={item.image} />
+            </div>
+            <div className="item__info">
+              <div className="item__title">{item.title}</div>
+              <div className="item__summary">{item.summary}</div>
+            </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
   };
 
   return (

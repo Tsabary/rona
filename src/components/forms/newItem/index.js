@@ -10,9 +10,24 @@ import TextEditor from "../../formComponents/textEditor";
 import RichTextEditor from "../../formComponents/richTextEditor";
 
 import { newItem } from "../../../actions";
+import TextButton from "../../formComponents/textButton";
 
 const NewItem = ({ newItem }) => {
   const [values, setValues] = useState({});
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageObj, setImageObj] = useState(null);
+
+  const handleImageChange = e => {
+    if (e.target.files[0]) {
+      const image = e.target.files[0];
+      setSelectedImage(URL.createObjectURL(image));
+      setImageObj(image);
+    }
+  };
+
+  const onSubmit = is_public => {
+    newItem({ ...values, is_public }, imageObj);
+  };
 
   return (
     <div className="popup" id="new-item">
@@ -21,26 +36,49 @@ const NewItem = ({ newItem }) => {
       </a>
       <div className="popup__container">
         <div className="popup__title">Create a new item</div>
-        <form onSubmit={() => newItem(values)}>
+        <form
+          onSubmit={() => {
+            onSubmit(true);
+          }}
+        >
+          <label htmlFor="image" className="new-event__label">
+            <div className="new-item__image-container">
+              <div className="cover-image__container">
+                {selectedImage ? (
+                  <img className="cover-image clickable" src={selectedImage} />
+                ) : (
+                  <div className="new-item__image-empty-1">
+                    <div className="new-item__image-empty-2">Pick a Pic</div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </label>
+
+          <input
+            id="image"
+            className="new-item__upload"
+            type="file"
+            onChange={handleImageChange}
+          />
+
           <InputField
             type="text"
-            placeHolder="This is a simple input field"
-            label="Simple input field"
-            value={values.input_field}
-            onChange={input_field => setValues({ ...values, input_field })}
+            placeHolder="Title"
+            label="Title"
+            value={values.title}
+            onChange={title => setValues({ ...values, title })}
           />
           <TextArea
             type="text"
-            placeHolder="This is a text area"
-            value={values.text_area}
-            onChange={text_area => setValues({ ...values, text_area })}
+            placeHolder="A bit more about the content of this.."
+            value={values.summary}
+            onChange={summary => setValues({ ...values, summary })}
             label="Text area"
           />
 
           <RichTextEditor
-            onChange={actual_content =>
-              setValues({ ...values, actual_content })
-            }
+            onChange={content => setValues({ ...values, content })}
           />
           {/* <TextEditor
             placeholder="This is for actual content.."
@@ -89,6 +127,14 @@ const NewItem = ({ newItem }) => {
             <button type="submit" className="boxed-button">
               Submit
             </button>
+          </div>
+          <div
+            className="new-item__save centered small-margin-top"
+            onClick={() => {
+              onSubmit(false);
+            }}
+          >
+            Save for later
           </div>
         </form>
       </div>

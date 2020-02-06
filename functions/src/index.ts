@@ -23,9 +23,15 @@ exports.writeFileToDatabase = functions.storage.object().onFinalize(object => {
       switch (silcedPath[1]) {
         case "user-avatars":
           return db
-            .collection('users')
+            .collection("users")
             .doc(silcedPath[2])
             .set({ avatar: FieldValue.arrayUnion(url) }, { merge: true });
+
+        case "items":
+          return db
+            .collection("items")
+            .doc(silcedPath[2])
+            .set({ image: FieldValue.arrayUnion(url) }, { merge: true });
 
         default:
           return null;

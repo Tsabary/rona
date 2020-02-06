@@ -17,6 +17,7 @@ h1 {
   font-family: var(--font-main-bold);
   font-weight: 900;
   font-size: 5rem;
+  line-height: 8rem;
   text-align: center;
   color: var(--color-grey-dark);
   margin-top: 4rem;
@@ -26,6 +27,7 @@ h2 {
   font-family: var(--font-main-bold);
   font-weight: 900;
   font-size: 4rem;
+  line-height: 6rem;
   text-align: center;
   color: var(--color-grey-dark);
   margin-top: 3.5rem;
@@ -36,6 +38,7 @@ h3 {
   font-family: var(--font-main-bold);
   font-weight: 900;
   font-size: 3rem;
+  line-height: 5rem;
   text-align: center;
   color: var(--color-grey-dark);
   margin-top: 3rem;
@@ -174,7 +177,7 @@ h3 {
   opacity: 0;
   transition: all 0.2s;
   position: absolute;
-
+background-color: rgba(255, 255, 255, 0.75);
   &:target {
     visibility: visible;
     opacity: 1;

@@ -122,9 +122,9 @@ export const fetchSingleUser = (id, setEvent) => async dispatch => {
   }
 };
 
-export const newItem = values => () => {
+export const newItem = (values, image) => () => {
   const newDoc = db.collection("items").doc();
-  // storageRef.child(`images/sub-collection/${newDoc.id}`).put(image);
+  storageRef.child(`images/items/${newDoc.id}`).put(image);
 
   newDoc.set({ ...values, id: newDoc.id });
 };
