@@ -33,7 +33,8 @@ export const Global = createGlobalStyle`
 
   body {
     font-family: GilroyLight;
-    font-size : 1.8rem
+    font-size : 1.8rem;
+    line-height: 3rem;
   }
 `;
 

@@ -1,11 +1,16 @@
 import firebase from "../firebase";
-import { FETCH_GROUP, FETCH_SINGLE } from "./types";
+import {
+  FETCH_GROUP,
+  FETCH_SINGLE,
+  FETCH_USERS,
+  FETCH_SINGLE_USER
+} from "./types";
 
 const db = firebase.firestore();
 const storageRef = firebase.storage().ref();
 
 export const logIn = (email, password) => () => {
-  console.log('logIn')
+  console.log("logIn");
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -19,7 +24,7 @@ export const logOut = () => () => {
 };
 
 export const signUp = (email, password, name) => () => {
-  console.log('signUp')
+  console.log("signUp");
 
   firebase
     .auth()
@@ -35,12 +40,12 @@ export const signUp = (email, password, name) => () => {
 };
 
 export const updateProfile = (values, user, imageObj) => () => {
-  console.log('updateProfile')
+  console.log("updateProfile");
 
   db.collection("users")
     .doc(user.uid)
     .update(values);
-  storageRef.child(`images/users/${user.uid}`).put(imageObj);
+  storageRef.child(`images/user-avatars/${user.uid}`).put(imageObj);
 };
 
 export const fetchAllItems = () => async dispatch => {
@@ -80,7 +85,44 @@ export const fetchSingleItem = (id, setEvent) => async dispatch => {
   }
 };
 
-export const newItem = (values) => () => {
+export const fetchAllUsers = () => async dispatch => {
+  const data = await db.collection("users").get();
+
+  if (data.docs !== undefined) {
+    const docsData = [];
+    data.docs.map(doc => {
+      docsData.push(doc.data());
+    });
+
+    dispatch({
+      type: FETCH_USERS,
+      payload: docsData
+    });
+  } else {
+    dispatch({
+      type: FETCH_USERS,
+      payload: []
+    });
+  }
+};
+
+export const fetchSingleUser = (id, setEvent) => async dispatch => {
+  const data = await db
+    .collection("users")
+    .doc(id)
+    .get();
+
+  // setEvent(data.data());
+
+  if (!!data) {
+    dispatch({
+      type: FETCH_SINGLE_USER,
+      payload: data.data()
+    });
+  }
+};
+
+export const newItem = values => () => {
   const newDoc = db.collection("items").doc();
   // storageRef.child(`images/sub-collection/${newDoc.id}`).put(image);
 

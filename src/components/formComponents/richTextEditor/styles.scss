@@ -1,0 +1,33 @@
+.rich-text-editor {
+  width: 100%;
+  height: max-content;
+  font-family: var(--font-main);
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  padding: 3rem;
+  outline: none;
+  border: none;
+  background-color: white;
+  box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
+  border-radius: 3rem;
+  display: block;
+
+  &__container {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: visible;
+    
+  }
+}
+
+.public-DraftEditorPlaceholder-inner {
+  position: absolute;
+  color: #ccc;
+  pointer-events: none;
+}
+.public-DraftEditor-content {
+  height: max-content;
+  max-height: 80rem;
+  overflow-x: visible;
+}

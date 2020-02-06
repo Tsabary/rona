@@ -1,4 +1,21 @@
-npm install -s react-redux redux redux-thunk node-sass firebase react-router-dom styled-components draft-js js-cookie react-highlight-words
+npm install -s
+react-redux
+redux 
+redux-thunk
+node-sass
+firebase 
+react-router-dom 
+styled-components
+draft-js js-cookie 
+react-highlight-words 
+draft-js-plugins-editor 
+draft-js-focus-plugin
+draft-js-alignment-plugin
+draft-js-inline-toolbar-plugin
+draft-js-mention-plugin
+draft-js-anchor-plugin
+draft-js-buttons
+draft-js-undo-plugin
 
 How to allow the cloud function to read the new file url:
 

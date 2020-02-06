@@ -7,6 +7,7 @@ import RadioField from "../../formComponents/radioField";
 import ToggleField from "../../formComponents/toggleField";
 import TextArea from "../../formComponents/textArea";
 import TextEditor from "../../formComponents/textEditor";
+import RichTextEditor from "../../formComponents/richTextEditor";
 
 import { newItem } from "../../../actions";
 
@@ -36,12 +37,17 @@ const NewItem = ({ newItem }) => {
             label="Text area"
           />
 
-          <TextEditor
-            placeholder="This is for actual content.."
+          <RichTextEditor
             onChange={actual_content =>
               setValues({ ...values, actual_content })
             }
           />
+          {/* <TextEditor
+            placeholder="This is for actual content.."
+            onChange={actual_content =>
+              setValues({ ...values, actual_content })
+            }
+          /> */}
 
           <div className="flex-group small-margin-top">
             <RadioField

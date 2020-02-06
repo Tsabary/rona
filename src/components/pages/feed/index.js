@@ -3,11 +3,16 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { fetchAllItems } from "../../../actions";
-
+// import '../../../../node_modules/draft-js-emoji-plugin/lib/plugin.css'
+// import "../../../../node_modules/draft-js-hashtag-plugin/lib/plugin.css";
 const Feed = ({ items, fetchAllItems }) => {
   useEffect(() => {
     fetchAllItems();
   }, []);
+
+  function createMarkup(content) {
+    return { __html: content };
+  }
 
   const renderItems = () => {
     return items.map(item => {
@@ -17,7 +22,10 @@ const Feed = ({ items, fetchAllItems }) => {
             <img className="round-image" src={member.image} />
           </div> */}
           <div className="item__info">
-            <div className="item__detail">{item.input_field}</div>
+            <div
+              className="item__detail"
+              dangerouslySetInnerHTML={createMarkup(item.actual_content)}
+            />
           </div>
         </div>
       );
@@ -27,7 +35,13 @@ const Feed = ({ items, fetchAllItems }) => {
   return (
     <div className="feed">
       <h2>feed</h2>
-      <div className="feed__feed medium-margin-top">{renderItems()}</div>
+      {!!items.length ? (
+        <div className="feed__feed medium-margin-top">{renderItems()}</div>
+      ) : (
+        <div className="results__empty small-margin-top centered">
+          Nothing to see here
+        </div>
+      )}
     </div>
   );
 };

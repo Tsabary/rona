@@ -20,9 +20,15 @@ exports.writeFileToDatabase = functions.storage.object().onFinalize(object => {
       const url = results[0];
       const silcedPath = path.split("/", 3);
 
-      return db
-        .collection(silcedPath[1])
-        .doc(silcedPath[2])
-        .set({ image: FieldValue.arrayUnion(url) }, { merge: true });
+      switch (silcedPath[1]) {
+        case "user-avatars":
+          return db
+            .collection('users')
+            .doc(silcedPath[2])
+            .set({ avatar: FieldValue.arrayUnion(url) }, { merge: true });
+
+        default:
+          return null;
+      }
     });
 });

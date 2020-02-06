@@ -1,0 +1,7 @@
+.auth-options {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-gap: 3rem;
+  width: max-content;
+  align-items: center;
+}
