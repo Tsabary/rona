@@ -157,7 +157,7 @@ h3 {
     cursor: pointer;
     &--facebook {
       :hover {
-        fill: #3b5998;
+        fill: var(--color-facebook);
       }
     }
     &--instagram {
@@ -177,7 +177,7 @@ h3 {
   opacity: 0;
   transition: all 0.2s;
   position: absolute;
-background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.75);
   &:target {
     visibility: visible;
     opacity: 1;
@@ -216,6 +216,7 @@ background-color: rgba(255, 255, 255, 0.75);
     font-size: 5rem;
     color: var(--color-grey-dark);
     margin-bottom: 3rem;
+    margin-top: 3rem;
   }
 
   &__button {

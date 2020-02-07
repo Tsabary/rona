@@ -3,7 +3,8 @@ import {
   FETCH_GROUP,
   FETCH_SINGLE,
   FETCH_USERS,
-  FETCH_SINGLE_USER
+  FETCH_SINGLE_USER,
+  SET_PAGE
 } from "./types";
 
 const db = firebase.firestore();
@@ -23,20 +24,29 @@ export const logOut = () => () => {
   firebase.auth().signOut();
 };
 
-export const signUp = (email, password, name) => () => {
-  console.log("signUp");
-
+export const signUp = (email, password, setSent) => () => {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(result => {
-      db.collection("users")
-        .doc(result.user.uid)
-        .set({ name, uid: result.user.uid, roles: [] })
-        .then(() => {
-          window.location.hash = "";
-        });
+      result.user.sendEmailVerification();
+      setSent(true);
     });
+};
+
+export const resendVerification = () => () => {
+  firebase.auth().currentUser.sendEmailVerification();
+};
+
+export const providerSignIn = provider => () => {
+  var googleProvider = new firebase.auth.GoogleAuthProvider();
+  var facebookProvider = new firebase.auth.FacebookAuthProvider();
+  switch (provider) {
+    case "google":
+      firebase.auth().signInWithPopup(googleProvider);
+    case "facebook":
+      firebase.auth().signInWithPopup(facebookProvider);
+  }
 };
 
 export const updateProfile = (values, user, imageObj) => () => {
@@ -44,7 +54,7 @@ export const updateProfile = (values, user, imageObj) => () => {
 
   db.collection("users")
     .doc(user.uid)
-    .update(values);
+    .set(values, { merge: true });
   storageRef.child(`images/user-avatars/${user.uid}`).put(imageObj);
 };
 
@@ -127,4 +137,11 @@ export const newItem = (values, image) => () => {
   storageRef.child(`images/items/${newDoc.id}`).put(image);
 
   newDoc.set({ ...values, id: newDoc.id });
+};
+
+export const setCurrentPage = value => {
+   return {
+    type: SET_PAGE,
+    payload: value
+  };
 };

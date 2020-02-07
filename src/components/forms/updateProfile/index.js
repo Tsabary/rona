@@ -16,7 +16,7 @@ import TextArea from "../../formComponents/textArea";
 
 const UpdateProfile = ({ updateProfile }) => {
   const [values, setValues] = useState({});
-  const { currentUserProfile } = useContext(AuthContext);
+  const { currentUserProfile, currentUser } = useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageObj, setImageObj] = useState(null);
 
@@ -56,11 +56,11 @@ const UpdateProfile = ({ updateProfile }) => {
         Close
       </a>
       <div className="popup__container">
-        <div className="popup__title">Login</div>
+        <div className="popup__title">Update your profile</div>
         <form
-          onSubmit={() => updateProfile(values, currentUserProfile, imageObj)}
+          onSubmit={() => updateProfile(values, currentUser, imageObj)}
         >
-          <label htmlFor="image" className="new-event__label">
+          <label htmlFor="update-profile-image" className="new-event__label">
             <div className="round-image__container">
               <img
                 className="round-image clickable"
@@ -73,7 +73,7 @@ const UpdateProfile = ({ updateProfile }) => {
             </div>
           </label>
           <input
-            id="image"
+            id="update-profile-image"
             className="update-profile__upload"
             type="file"
             onChange={handleImageChange}

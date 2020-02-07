@@ -5,19 +5,18 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../providers/Auth";
 
-import { logOut } from "../../../actions";
+import { logOut, resendVerification } from "../../../actions";
 
 import TextButton from "../../formComponents/textButton";
 
-const UserOptions = ({ logOut }) => {
-  const { currentUserProfile } = useContext(AuthContext);
-
+const UserOptions = ({ logOut, resendVerification }) => {
+  const { currentUserProfile, currentUser } = useContext(AuthContext);
+  console.log(currentUser);
   return (
     <div className="user-options ">
       <div className="flex-group">
-          
         <div className="user-options__name tiny-margin-right">
-          {currentUserProfile.name}
+          {!!currentUserProfile ? currentUserProfile.name : currentUser.email}
         </div>
         <div className="user-options__image-container ">
           <img
@@ -28,18 +27,26 @@ const UserOptions = ({ logOut }) => {
             }
           />
         </div>
-
       </div>
       <div className="user-options__options">
-        {currentUserProfile.roles.includes("admin") ? (
+        {!!currentUserProfile &&
+        currentUserProfile.roles &&
+        currentUserProfile.roles.includes("admin") ? (
           <Link to="/admins" className="user-options__option">
             <TextButton text="Option for admins" />
           </Link>
         ) : null}
 
-        <a className="user-options__option" href="#update-profile">
-          <TextButton text="Edit profile" />
-        </a>
+        {currentUser.emailVerified ? (
+          <a className="user-options__option" href="#update-profile">
+            <TextButton text="Edit profile" />
+          </a>
+        ) : (
+          <TextButton
+            text="Resend email verification"
+            onClick={resendVerification}
+          />
+        )}
 
         <div className="user-options__option" onClick={() => logOut()}>
           <TextButton text="Logout" />
@@ -48,4 +55,4 @@ const UserOptions = ({ logOut }) => {
     </div>
   );
 };
-export default connect(null, { logOut })(UserOptions);
+export default connect(null, { logOut, resendVerification })(UserOptions);

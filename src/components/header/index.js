@@ -8,11 +8,11 @@ import AuthOptions from "./authOptions";
 import UserOptions from "./userOptions";
 
 const Header = () => {
-  const { currentUserProfile, currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
   const renderAuth = () => {
     switch (true) {
-      case !!currentUserProfile && !!currentUser:
+      case !!currentUser:
         return <UserOptions />;
 
       case !currentUser:

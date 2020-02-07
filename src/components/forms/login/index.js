@@ -1,12 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import InputField from "../../formComponents/inputField";
-import { logIn } from "../../../actions";
+import { logIn, providerSignIn } from "../../../actions";
 
-const LogIn = ({ logIn }) => {
+const LogIn = ({ logIn, providerSignIn }) => {
   const [values, setValues] = useState({});
-
 
   return (
     <div className="popup" id="log-in">
@@ -30,10 +29,28 @@ const LogIn = ({ logIn }) => {
             onChange={password => setValues({ ...values, password })}
             label="Password"
           />
-          <div className="popup__button medium-margin-top">
-            <button type="submit" className="boxed-button">
-              Login
-            </button>
+          <button
+            type="submit"
+            className="sign-up__button sign-up__button--direct"
+          >
+            Login with email
+          </button>
+
+          <div
+            className="sign-up__button sign-up__button--google  small-margin-top"
+            onClick={() => {
+              providerSignIn("google");
+            }}
+          >
+            google
+          </div>
+          <div
+            className="sign-up__button sign-up__button--facebook small-margin-top"
+            onClick={() => {
+              providerSignIn("facebook");
+            }}
+          >
+            facebook
           </div>
         </form>
       </div>
@@ -41,4 +58,4 @@ const LogIn = ({ logIn }) => {
   );
 };
 
-export default connect(null, { logIn })(LogIn);
+export default connect(null, { logIn, providerSignIn })(LogIn);

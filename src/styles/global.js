@@ -14,7 +14,8 @@ export const Global = createGlobalStyle`
     --color-grey-light: #d1d1d1;
     --color-grey-medium: #ababab;
     --color-grey-dark: #1E1C00;
-
+    --color-facebook:  #3b5998;
+    
     --color-gradient: linear-gradient(var(--color-main), var(--color-main-dark));
   }
    * {
