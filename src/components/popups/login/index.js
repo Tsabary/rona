@@ -36,13 +36,13 @@ const LogIn = ({ logIn, providerSignIn }) => {
           />
           <button
             type="submit"
-            className="sign-up__button sign-up__button--direct small-margin-top"
+            className="auth__button auth__button--direct small-margin-top"
           >
             Login with email
           </button>
 
           <div
-            className="sign-up__button sign-up__button--google  small-margin-top"
+            className="auth__button auth__button--google small-margin-top"
             onClick={() => {
               providerSignIn("google");
             }}
@@ -50,7 +50,7 @@ const LogIn = ({ logIn, providerSignIn }) => {
             google
           </div>
           <div
-            className="sign-up__button sign-up__button--facebook small-margin-top"
+            className="auth__button auth__button--facebook small-margin-top"
             onClick={() => {
               providerSignIn("facebook");
             }}

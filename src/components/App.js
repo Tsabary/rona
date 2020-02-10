@@ -9,10 +9,9 @@ import { AuthProvider } from "../providers/Auth";
 
 import history from "../history";
 
-import SignUp from "./forms/signUp";
-import LogIn from "./forms/login";
-// import NewItem from "./forms/newItem";
-import UpdateProfile from "./forms/updateProfile";
+import SignUp from "./popups/signUp";
+import LogIn from "./popups/login";
+import UpdateProfile from "./popups/updateProfile";
 
 import Home from "./pages/home";
 import Feed from "./pages/feed";
