@@ -9,7 +9,7 @@ const ToggleButton = ({ id, onChange, isChecked }) => {
         type="checkbox"
         defaultChecked ={isChecked}
         id={id}
-        onChange={() => onChange()}
+        onChange={onChange}
       />
       <label className="toggle-button__label" htmlFor={id}>
         <div className="toggle-button__component" id="component" />

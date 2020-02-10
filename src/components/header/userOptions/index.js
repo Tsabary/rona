@@ -1,5 +1,5 @@
 import "./styles.scss";
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,17 @@ import TextButton from "../../formComponents/textButton";
 
 const UserOptions = ({ logOut, resendVerification }) => {
   const { currentUserProfile, currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (
+      !!currentUserProfile &&
+      currentUserProfile.roles &&
+      currentUserProfile.roles.includes("admin")
+    )
+      setIsAdmin(true);
+  }, [currentUserProfile]);
+
   return (
     <div className="user-options ">
       <div className="flex-group">
@@ -29,9 +39,7 @@ const UserOptions = ({ logOut, resendVerification }) => {
         </div>
       </div>
       <div className="user-options__options">
-        {!!currentUserProfile &&
-        currentUserProfile.roles &&
-        currentUserProfile.roles.includes("admin") ? (
+        {isAdmin ? (
           <Link to="/admins" className="user-options__option">
             <TextButton text="Option for admins" />
           </Link>

@@ -1,4 +1,5 @@
 .rich-text-editor {
+  position: relative;
   width: 100%;
   height: max-content;
   font-family: var(--font-main);
@@ -14,10 +15,7 @@
 
   &__container {
     height: 100%;
-    width: 90%;
-    overflow-y: auto;
-    overflow-x: visible;
-    
+    width: 100%;
   }
 }
 
@@ -28,6 +26,7 @@
 }
 .public-DraftEditor-content {
   height: max-content;
-  max-height: 80rem;
+  min-height: 20rem;
+  // max-height: 80rem;
   overflow-x: visible;
 }

@@ -10,6 +10,8 @@
       text-decoration: none;
       color: var(--color-grey-medium);
       width: max-content;
+      cursor: pointer;
+      user-select: none;
       &:hover {
         color: var(--color-main);
       }

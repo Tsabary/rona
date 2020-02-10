@@ -50,8 +50,6 @@ export const providerSignIn = provider => () => {
 };
 
 export const updateProfile = (values, user, imageObj) => () => {
-  console.log("updateProfile");
-
   db.collection("users")
     .doc(user.uid)
     .set(values, { merge: true });
@@ -132,15 +130,58 @@ export const fetchSingleUser = (id, setEvent) => async dispatch => {
   }
 };
 
-export const newItem = (values, image) => () => {
+export const newItem = (values, image, setValues) => () => {
   const newDoc = db.collection("items").doc();
-  storageRef.child(`images/items/${newDoc.id}`).put(image);
 
-  newDoc.set({ ...values, id: newDoc.id });
+  newDoc
+    .set({ ...values, id: newDoc.id })
+    .then(() => {
+      storageRef
+        .child(`images/items/${newDoc.id}`)
+        .put(image)
+        .then(result => {
+          console.log(result);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    })
+    // .then(() => {
+    //   setValues({});
+    // })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const updateItem = (values, image, setValues) => () => {
+  
+  console.log(image);
+  db.collection("items")
+    .doc(values.id)
+    .set(values)
+    .then(() => {
+      if (!!image)
+        storageRef
+          .child(`images/items/${values.id}`)
+          .put(image)
+          .then(result => {
+            console.log(result);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+    })
+    // .then(() => {
+    //   setValues({});
+    // })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const setCurrentPage = value => {
-   return {
+  return {
     type: SET_PAGE,
     payload: value
   };

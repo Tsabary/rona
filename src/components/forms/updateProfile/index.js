@@ -66,7 +66,7 @@ const UpdateProfile = ({ updateProfile }) => {
                 className="round-image clickable"
                 src={
                   selectedImage ||
-                  (currentUserProfile && currentUserProfile.image) ||
+                  (currentUserProfile && currentUserProfile.avatar) ||
                   "../../imgs/logo.jpeg"
                 }
               />

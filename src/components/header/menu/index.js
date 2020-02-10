@@ -10,7 +10,10 @@ const Menu = ({ setCurrentPage, page }) => {
   const myHistory = useHistory(history);
 
   const turnToLowerCaseWithHyphen = string => {
-    return (string[0].toLowerCase() + string.slice(1)).replace(" ", "-");
+    return string
+      .toLowerCase()
+      .split(" ")
+      .join("-");
   };
 
   const handleChange = page => {

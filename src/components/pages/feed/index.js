@@ -1,23 +1,18 @@
 import "./styles.scss";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { fetchAllItems } from "../../../actions";
-// import '../../../../node_modules/draft-js-emoji-plugin/lib/plugin.css'
-// import "../../../../node_modules/draft-js-hashtag-plugin/lib/plugin.css";
+
 const Feed = ({ items, fetchAllItems }) => {
   useEffect(() => {
     fetchAllItems();
   }, []);
 
-  /* 
-  const  createMarkup = (content) => {
+  const createMarkup = content => {
     return { __html: content };
-  }         
-  <div
-    className="item__detail"
-    dangerouslySetInnerHTML={createMarkup(item.title)}
-  /> */
+  };
 
   const renderItems = () => {
     return items
@@ -26,15 +21,20 @@ const Feed = ({ items, fetchAllItems }) => {
       })
       .map(item => {
         return (
-          <div className="item" key={item.id}>
+          <Link to={`/item/${item.id}`} className="item" key={item.id}>
             <div className="cover-image__container">
               <img className="cover-image" src={item.image} />
             </div>
             <div className="item__info">
               <div className="item__title">{item.title}</div>
               <div className="item__summary">{item.summary}</div>
+
+              <div
+                className="item__detail"
+                dangerouslySetInnerHTML={createMarkup(item.content)}
+              />
             </div>
-          </div>
+          </Link>
         );
       });
   };
@@ -45,7 +45,7 @@ const Feed = ({ items, fetchAllItems }) => {
       {!!items.length ? (
         <div className="feed__feed medium-margin-top">{renderItems()}</div>
       ) : (
-        <div className="results__empty small-margin-top centered">
+        <div className="empty-feed small-margin-top centered">
           Nothing to see here
         </div>
       )}

@@ -4,7 +4,7 @@ admin.initializeApp(functions.config().firebase);
 
 const db = admin.firestore();
 const defaultStorage = admin.storage();
-const FieldValue = admin.firestore.FieldValue;
+// const FieldValue = admin.firestore.FieldValue;
 
 exports.userCreated = functions.auth.user().onCreate(user => {
   if (
@@ -54,13 +54,13 @@ exports.writeFileToDatabase = functions.storage.object().onFinalize(object => {
           return db
             .collection("users")
             .doc(silcedPath[2])
-            .set({ avatar: FieldValue.arrayUnion(url) }, { merge: true });
+            .set({ avatar: url }, { merge: true });
 
         case "items":
           return db
             .collection("items")
             .doc(silcedPath[2])
-            .set({ image: FieldValue.arrayUnion(url) }, { merge: true });
+            .set({ image: url }, { merge: true });
 
         default:
           return null;

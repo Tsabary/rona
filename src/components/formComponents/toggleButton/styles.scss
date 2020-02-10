@@ -2,8 +2,8 @@
   display: flex;
 
   &__checkbox {
-    visibility: hidden;
-    opacity: 0;
+    // visibility: hidden;
+    // opacity: 0;
 
     &:checked + .toggle-button__label #component {
       background-color: var(--color-main);

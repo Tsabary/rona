@@ -7,6 +7,11 @@ import { logIn, providerSignIn } from "../../../actions";
 const LogIn = ({ logIn, providerSignIn }) => {
   const [values, setValues] = useState({});
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    logIn(values.email, values.password);
+  };
+
   return (
     <div className="popup" id="log-in">
       <a className="popup__close" href="#">
@@ -14,7 +19,7 @@ const LogIn = ({ logIn, providerSignIn }) => {
       </a>
       <div className="popup__container">
         <div className="popup__title">Login</div>
-        <form onSubmit={() => logIn(values.email, values.password)}>
+        <form onSubmit={handleSubmit}>
           <InputField
             type="email"
             placeHolder="Email address"
@@ -31,7 +36,7 @@ const LogIn = ({ logIn, providerSignIn }) => {
           />
           <button
             type="submit"
-            className="sign-up__button sign-up__button--direct"
+            className="sign-up__button sign-up__button--direct small-margin-top"
           >
             Login with email
           </button>

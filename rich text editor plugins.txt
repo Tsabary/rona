@@ -1,0 +1,30 @@
+problametic:
+
+
+
+2. Mention - How can mentioning persist after posting.
+
+3. Hashtag - How can hashtags persist after posting.
+
+
+
+
+
+Works perfectly:
+
+1. Undo/Redo.
+
+2. Emojis
+
+3. inline toolbar - works - showing bold, italic, underline, header, numbered lists and unnumbered lists.
+iniline toolbar issues - numbered and unnumbered lists don't show on the sides, when overflow y is set to auto, but it is not set to auto then the text doesn't remin within the bounderies of th editor.
+ --I've cancaled the maximun height and aso the overflow setting. It's not optimal but it's not as worse as the alternative.
+
+4. divider doesnt show up -- works like a charm. Had to add position relative to parent component
+***After publishing it isn't visible at all
+
+5. Anchor - anchor doesn't appear in inline toolbar. -- fixed, works perfectly
+
+5. Linkify - links just turn into text after posting. Fuck linkify. anchor works instead
+
+
