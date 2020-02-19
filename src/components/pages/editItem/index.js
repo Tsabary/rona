@@ -13,7 +13,6 @@ const EditItem = ({ match, items, fetchSingleItem, updateItem }) => {
   //   const { currentUserProfile } = useContext(AuthContext);
   ///// Not sure if here - but needs to set a wal so only authorized users can edit listings
   const [values, setValues] = useState(null);
-  // const [selectedImage, setSelectedImage] = useState(null);
   const [imageObj, setImageObj] = useState(null);
 
   useEffect(() => {
@@ -27,30 +26,19 @@ const EditItem = ({ match, items, fetchSingleItem, updateItem }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  // const handleImageChange = e => {
-  //   if (e.target.files[0]) {
-  //     const image = e.target.files[0];
-  //     setSelectedImage(URL.createObjectURL(image));
-  //     setImageObj(image);
-  //   }
-  // };
-
-  const onSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
     updateItem(values, imageObj, setValues);
-    // newItem({ ...values, is_public }, imageObj, setValues);
   };
 
   return (
     <div>
       <h2>Edit your item</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         {!!values ? (
           <Item
             values={values}
             setValues={setValues}
-            // handleImageChange={handleImageChange}
-            // selectedImage={selectedImage}
             setImageObj={setImageObj}
           />
         ) : null}

@@ -16,9 +16,9 @@ const Menu = ({ setCurrentPage, page }) => {
       .join("-");
   };
 
-  const handleChange = page => {
+  const handleChange = (page, path) => {
     setCurrentPage(page);
-    myHistory.push(`/${page}`);
+    myHistory.push(path);
   };
 
   const renderMenuItems = array => {
@@ -32,7 +32,9 @@ const Menu = ({ setCurrentPage, page }) => {
             type="radio"
             name="menu-items"
             checked={page === smallHyphenedItem}
-            onChange={() => handleChange(smallHyphenedItem)}
+            onChange={() =>
+              handleChange(smallHyphenedItem, `/${smallHyphenedItem}`)
+            }
           />
           <label htmlFor={smallHyphenedItem} className="menu-item__label">
             {item}
@@ -46,22 +48,38 @@ const Menu = ({ setCurrentPage, page }) => {
     return array.map(group => {
       return (
         <div className="menu-item menu__dropdown" key={group.title}>
-          <div className="menu__dropdown-title">{group.title}</div>
+          <input
+            id={turnToLowerCaseWithHyphen(group.title)}
+            className="menu-item__radio"
+            type="radio"
+            name="menu-items"
+            checked={page === turnToLowerCaseWithHyphen(group.title)}
+          />
+
+          <label
+            htmlFor={turnToLowerCaseWithHyphen(group.title)}
+            className="menu__dropdown-title menu-item__label"
+          >
+            {group.title}
+          </label>
+
           <div className="menu-item menu__dropdown-content">
             {group.pages.map(page => {
               return (
-                <Link
-                  to={
-                    "/" +
-                    turnToLowerCaseWithHyphen(group.title) +
-                    "/" +
-                    turnToLowerCaseWithHyphen(page)
+                <div
+                  onClick={() =>
+                    handleChange(
+                      turnToLowerCaseWithHyphen(group.title),
+                      `/${turnToLowerCaseWithHyphen(
+                        group.title
+                      )}/${turnToLowerCaseWithHyphen(page)}`
+                    )
                   }
                   className="menu-item__label"
                   key={page}
                 >
                   {page}
-                </Link>
+                </div>
               );
             })}
           </div>

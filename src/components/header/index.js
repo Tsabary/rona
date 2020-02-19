@@ -1,14 +1,20 @@
 import "./styles.scss";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import history from "../../history";
+
+import { setCurrentPage } from "../../actions";
+
 
 import { AuthContext } from "../../providers/Auth";
 import Menu from "./menu";
 import AuthOptions from "./authOptions";
 import UserOptions from "./userOptions";
 
-const Header = () => {
+const Header = ({ setCurrentPage }) => {
   const { currentUser } = useContext(AuthContext);
+  const myHistory = useHistory(history);
 
   const renderAuth = () => {
     switch (true) {
@@ -22,13 +28,18 @@ const Header = () => {
     }
   };
 
+  const handleChange = page => {
+    setCurrentPage(page);
+    myHistory.push(`/`);
+  };
+
   return (
     <div className="header">
       <div className="header__logo-container">
-        {/* <div className="header__logo" /> */}
-        <Link to={"/"} className="header__title">
-          Brand
-        </Link>
+        <div className="header__logo-container" onClick={handleChange}>
+          {/* <div className="header__logo" /> */}
+          <div className="header__title">Brand</div>
+        </div>
       </div>
 
       <div className="header__menu">
@@ -39,4 +50,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default connect(null, { setCurrentPage })(Header);

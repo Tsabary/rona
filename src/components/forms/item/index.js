@@ -68,7 +68,6 @@ const Item = ({ values, setValues, setImageObj }) => {
 
       <RichTextEditor
         onChange={content => setValues({ ...values, content })}
-        // onChange={content => console.log(content)}
         value={!!values && values.content}
       />
 

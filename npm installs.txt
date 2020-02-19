@@ -6,9 +6,11 @@ node-sass
 firebase 
 react-router-dom 
 styled-components
-draft-js js-cookie 
+js-cookie 
 react-highlight-words 
-draft-js-plugins-editor draft-js-focus-plugin draft-js-alignment-plugin draft-js-inline-toolbar-plugin draft-js-mention-plugin draft-js-anchor-plugin draft-js-buttons draft-js-undo-plugin draft-js-divider-plugin draft-js-emoji-plugin draft-js-hashtag-plugin draft-js-linkify-plugin draft-js-side-toolbar-plugin draft-js-focus-plugin
+draft-js draft-js-plugins-editor draft-js-focus-plugin draft-js-alignment-plugin draft-js-inline-toolbar-plugin draft-js-mention-plugin draft-js-anchor-plugin draft-js-buttons draft-js-undo-plugin draft-js-divider-plugin draft-js-emoji-plugin draft-js-hashtag-plugin draft-js-linkify-plugin draft-js-side-toolbar-plugin draft-js-focus-plugin draft-js-export-html draft-js-import-html
+
+moment react-moment
 
 How to allow the cloud function to read the new file url:
 
