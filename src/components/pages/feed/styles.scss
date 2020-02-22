@@ -1,3 +1,5 @@
+@import "../../../styles/imports";
+
 .feed {
   &__feed {
     display: grid;
@@ -10,18 +12,15 @@
   border-radius: 3rem;
   box-shadow: 0 1rem 3rem rgb(180, 180, 180);
   overflow: hidden;
-  // cursor: pointer;
-  &__info{
-      padding: 3.5rem;
+  &__info {
+    padding: 3.5rem;
   }
-  &__title{
-    font-family: var(--font-main-bold);
+  &__title {
+    font-family: $fontBold;
     font-size: 2.5rem;
-    
   }
-  &__summary{
+  &__summary {
     margin-top: 2rem;
-    color: var(--color-grey-medium);
+    color: $grey;
   }
-
 }

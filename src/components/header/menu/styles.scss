@@ -1,19 +1,21 @@
+@import "../../../styles/imports";
+
 .menu {
   display: grid;
   grid-template-columns: repeat(4, max-content);
   grid-gap: 3rem;
   &-item {
     &__label {
-      font-family: var(--font-main);
+      font-family: $font;
       font-size: 1.6rem;
       transition: all 0.2s;
       text-decoration: none;
-      color: var(--color-grey-medium);
+      color: $grey;
       width: max-content;
       cursor: pointer;
       user-select: none;
       &:hover {
-        color: var(--color-main);
+        color: $mainColor;
       }
     }
 
@@ -21,7 +23,7 @@
       visibility: hidden;
       opacity: 0;
       &:checked + .menu-item__label {
-        color: var(--color-main);
+        color: $mainColor;
        }
     }
   }
@@ -47,11 +49,11 @@
     z-index: 1;
   }
   &__dropdown-title {
-    font-family: var(--font-main);
+    font-family: $font;
     font-size: 1.6rem;
     transition: all 0.2s;
     text-decoration: none;
-    color: var(--color-grey-medium);
+    color: $grey;
     width: max-content;
     cursor: pointer;
   }

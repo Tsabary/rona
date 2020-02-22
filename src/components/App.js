@@ -1,9 +1,9 @@
+import "../styles/styles.scss";
 import "./styles.scss";
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
 import Header from "./header";
-import Global from "../styles/global";
 
 import { AuthProvider } from "../providers/Auth";
 
@@ -26,8 +26,7 @@ const App = () => {
     <AuthProvider>
       <Router history={history}>
         <div className="app">
-          <Global />
-
+ 
           <SignUp />
           <LogIn />
           {/* <NewItem /> */}

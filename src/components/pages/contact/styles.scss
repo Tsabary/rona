@@ -1,3 +1,5 @@
+@import '../../../styles/imports';
+
 .contact{
     &__social{
         display: grid;
@@ -10,12 +12,12 @@
         cursor: pointer;
         &--facebook{
             :hover{
-                fill: #3b5998 ;
+                fill: $facebookColor ;
             }
         }
         &--instagram{
             :hover{
-                fill: #f2003c ;
+                fill: $instagramColor ;
             }
         }
     }

@@ -1,0 +1,20 @@
+$mainColor: #AB2087;
+$mainColorLightest: lighten($mainColor, 30%);
+$mainColorLight: lighten($mainColor, 15%);
+$mainColorDark: darken($mainColor, 15%);
+$mainColorDarkest: darken($mainColor, 30%);
+$mainColorTransparent: rgba(90, 50, 100, 0.05);
+
+$grey: #ababab;
+$greyLightest: lighten($grey, 50%);
+$greyLight: lighten($grey, 25%);
+$greyDark: darken($grey, 25%);
+$greyDarkest: darken($grey, 50%);
+
+$facebookColor: #3b5998;
+$instagramColor: #f2003c;
+$linkedinColor: #0e76a8;
+$dribbbleColor: #ea4c89;
+$githubColor: #505050;
+
+$gradientColor: linear-gradient($mainColor, $mainColorDark);

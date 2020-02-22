@@ -1,6 +1,8 @@
+@import "../../../styles/imports";
+
 .user-options {
   position: relative;
- 
+
   &:hover .user-options__options {
     opacity: 1;
     visibility: visible;
@@ -13,8 +15,7 @@
 
   &:hover .user-options__name {
     font-size: 1.9rem;
-    color: var(--color-main);
-
+    color: $mainColor;
   }
 
   &__options {

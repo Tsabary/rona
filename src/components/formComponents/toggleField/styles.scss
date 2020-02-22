@@ -1,3 +1,5 @@
+@import "../../../styles/imports";
+
 .toggle-field {
   display: flex;
   justify-content: space-between;
@@ -9,8 +11,8 @@
     margin-right: 2rem;
     user-select: none;
     cursor: pointer;
-    &:hover{
-      color: var(--color-main);
+    &:hover {
+      color: $mainColor;
     }
   }
 }

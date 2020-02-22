@@ -1,8 +1,10 @@
+@import "../../../styles/imports";
+
 .rich-text-editor {
   position: relative;
   width: 100%;
   height: max-content;
-  font-family: var(--font-main);
+  font-family: $font;
   font-size: 1.6rem;
   margin-top: 3rem;
   padding: 3rem;

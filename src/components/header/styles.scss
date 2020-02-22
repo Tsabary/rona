@@ -1,3 +1,5 @@
+@import "../../styles/imports";
+
 .header {
   display: grid;
   grid-template-columns: min-content 1fr max-content;
@@ -20,14 +22,14 @@
   }
 
   &__title {
-    font-family: var(--font-main-bold);
+    font-family: $fontBold;
     font-weight: 900;
     font-size: 4rem;
     text-align: center;
-    color: var(--color-grey-dark);
+    color: $greyDark;
 
     &:hover {
-      color: var(--color-grey-light);
+      color: $greyLight;
       cursor: pointer;
     }
   }

@@ -1,10 +1,12 @@
+@import "../../../styles/imports";
+
 .boxed-button {
   height: min-content;
   width: max-content;
   font-size: 1.8rem;
-  font-family: var(--font-main);
+  font-family: $font;
   user-select: none;
-  background: var(--color-gradient);
+  background: $gradientColor;
   color: white;
   padding: 1.5rem 5rem 1.7rem 5rem;
   border-radius: 5rem;

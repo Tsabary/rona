@@ -1,15 +1,17 @@
+@import "../../../styles/imports";
+
 .new-item {
   display: grid;
   grid-gap: 3rem;
 
   &__save {
     font-size: 1.8rem;
-    font-family: var(--font-main);
-    color: var(--color-grey-medium);
+    font-family: $font;
+    color: $grey;
     text-decoration: none;
     cursor: pointer;
     &:hover {
-      color: var(--color-main);
+      color: $mainColor;
     }
   }
 
@@ -22,16 +24,16 @@
         height: 100%;
         // left: 50%;
         top: 0;
-        border: 2px solid var(--color-grey-medium);
+        border: 2px solid $grey;
         display: flex;
         justify-content: center;
         align-items: center;
       }
       &-2 {
         cursor: pointer;
-        font-family: var(--font-main-bold);
+        font-family: $fontBold;
         font-size: 4rem;
-        color: var(--color-grey-light);
+        color: $greyLight;
         text-align: center;
         position: relative;
       }

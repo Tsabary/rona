@@ -1,7 +1,9 @@
+@import "../../../styles/imports";
+
 .text-editor {
   width: 100%;
   height: max-content;
-  font-family: GilroyLight, Arimo;
+  font-family: $font, Arimo;
   font-size: 1.6rem;
   margin-top: 3rem;
   padding: 3rem ;
@@ -31,7 +33,7 @@
   }
 
   input[type="button"].active {
-    background-color: var(--color-main);
+    background-color: $mainColor;
     color: white;
     border-color: transparent;
   }

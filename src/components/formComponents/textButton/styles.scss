@@ -1,10 +1,12 @@
+@import "../../../styles/imports";
+
 .text-button {
   font-size: 1.8rem;
-  font-family: var(--font-main);
-  color: var(--color-grey-dark);
+  font-family: $font;
+  color: $greyDark;
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    color: var(--color-main);
+    color: $mainColor;
   }
 }

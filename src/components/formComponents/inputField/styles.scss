@@ -1,8 +1,10 @@
+@import "../../../styles/imports";
+
 .input-field {
   &__input {
     width: 100%;
     height: min-content;
-    font-family: GilroyLight, Arimo;
+    font-family: $font, Arimo;
     font-size: 1.6rem;
     // margin-top: 3rem;
     padding: 1.5rem 3rem;
@@ -12,11 +14,11 @@
     box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
     border-radius: 3rem;
     display: block;
-    border-bottom: 2px solid var(--color-main);
+    border-bottom: 2px solid $mainColor;
 
     transition: all 0.3s;
     &::-webkit-input-placeholder {
-      color: var(--color-grey-light);
+      color: $greyLight;
     }
     &:invalid {
       border-bottom: 2px solid rgb(216, 6, 6);
@@ -26,7 +28,7 @@
     }
   }
   &__label {
-    font-family: GilroyLight;
+    font-family: $font;
     font-size: 1.2rem;
     display: block;
     transition: all 0.3s;

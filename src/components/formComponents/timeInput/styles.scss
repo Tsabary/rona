@@ -1,10 +1,12 @@
+@import "../../../styles/imports";
+
 .time-input {
     width: min-content;
     height: min-content;
     display: grid;
     grid-template-columns: max-content min-content max-content max-content;
     grid-gap: 1rem;
-    font-family: GilroyLight, Arimo;
+    font-family: $font, Arimo;
     font-size: 1.6rem;
     margin-top: 3rem;
     padding: 1.5rem 3rem;
@@ -13,7 +15,6 @@
     background-color: white;
     box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
     border-radius: 3rem;
-    // border-bottom: 2px solid var(--color-main);
     transition: all 0.3s;
   
 
@@ -22,7 +23,7 @@
     border: none;
     outline: none;
     &::-webkit-input-placeholder {
-      color: var(--color-grey-light);
+      color: $greyLight;
     }
     &:invalid {
       border-bottom: 2px solid rgb(216, 6, 6);
@@ -39,7 +40,7 @@
   }
 
   &__label {
-    font-family: GilroyLight;
+    font-family: $font;
     font-size: 1.2rem;
     display: block;
     transition: all 0.3s;
@@ -47,6 +48,6 @@
     margin-left: 2rem;
   }
 &__separator{
-    color: var(--color-grey-light);
+    color: $greyLight;
 }
 }

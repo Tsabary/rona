@@ -1,3 +1,5 @@
+@import "../../../styles/imports";
+
 .toggle-button {
   display: flex;
 
@@ -6,7 +8,7 @@
     // opacity: 0;
 
     &:checked + .toggle-button__label #component {
-      background-color: var(--color-main);
+      background-color: $mainColor;
       &::before {
         transform: translateX(3rem);
       }

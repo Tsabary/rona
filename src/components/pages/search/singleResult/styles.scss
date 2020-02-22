@@ -1,9 +1,11 @@
+@import '../../../../styles/imports';
+
 .single-result {
     display: grid;
     grid-template-columns: 10% 20% 30% 15% 15% 10%;
     width: 100%;
     padding: 0.8rem;
-    font-family: var(--font-main);
+    font-family: $font;
     font-size: 1.8rem;
   
     &__name {

@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 62.5%;
+    @media only screen and (max-width: 1100px) {
+      font-size: 50%;
+    }
+  }
+  
+  body {
+    font-family: GilroyLight;
+    font-size: 1.8rem;
+    line-height: 3rem;
+  }

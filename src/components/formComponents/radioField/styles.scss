@@ -1,3 +1,5 @@
+@import "../../../styles/imports";
+
 .radio-field {
   position: relative;
   margin-right: 4rem;
@@ -7,7 +9,7 @@
     align-items: center;
   }
   &__text {
-    font-family: GilroyLight;
+    font-family: $font;
     font-size: 1.6rem;
     user-select: none;
     cursor: pointer;
