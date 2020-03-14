@@ -19,7 +19,7 @@
     font-size: 1.8rem;
   }
   &__table {
-    border-radius: 2rem;
+    border-radius: $borderRadius;
     overflow: hidden;
   }
 }

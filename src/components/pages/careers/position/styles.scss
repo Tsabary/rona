@@ -1,0 +1,51 @@
+@import "../../../../styles/imports";
+
+.position {
+  display: grid;
+  gap: 2rem;
+  background-color: white;
+  border-radius: $borderRadius;
+  box-shadow: 0 0.4rem 2rem rgb(228, 228, 228);
+  width: 100%;
+  padding: 4rem;
+  transition: all .2s;
+  &:hover {
+    transform: translateY(-0.15rem);
+    box-shadow: 0 0.8rem 3rem rgb(220, 220, 220);
+    color: white;
+  }
+
+  &__title {
+    font-family: $fontBold;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    color: $mainColorDarkest;
+  }
+
+  &__location_and_type {
+    font-size: 1.8rem;
+    color: $grey;
+  }
+
+  &__brief {
+    font-size: 1.8rem;
+    color: $greyDark;
+  }
+
+  &__read-more {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 1rem;
+    width: max-content;
+    font-size: 1.2rem;
+    background-color: $mainColorDarkest;
+    padding: 0.5rem 1.2rem;
+    color: white;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    &:hover{
+        gap: 1.5rem;
+    }
+  }
+}

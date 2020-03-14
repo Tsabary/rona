@@ -90,7 +90,7 @@ const Menu = ({ setCurrentPage, page }) => {
 
   return (
     <div className="menu">
-      {renderMenuItems(["Feed", "Search", "Contact us"])}
+      {renderMenuItems(["Feed", "Search"])}
       {renderDropDownMenuItems([
         { title: "Top category", pages: ["Page 1", "Page 2"] }
       ])}

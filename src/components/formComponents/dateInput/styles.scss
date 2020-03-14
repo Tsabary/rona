@@ -14,7 +14,7 @@
   border: none;
   background-color: white;
   box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
-  border-radius: 3rem;
+  border-radius: $borderRadius;
   transition: all 0.3s;
   cursor: pointer;
 

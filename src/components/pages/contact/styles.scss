@@ -1,24 +1,6 @@
-@import '../../../styles/imports';
+@import "../../../styles/imports";
 
-.contact{
-    &__social{
-        display: grid;
-        grid-gap: 2rem;
-        grid-template-columns: repeat(2, min-content);
-    }
-    &__icon{
-        height: 4rem;
-        width: 4rem;
-        cursor: pointer;
-        &--facebook{
-            :hover{
-                fill: $facebookColor ;
-            }
-        }
-        &--instagram{
-            :hover{
-                fill: $instagramColor ;
-            }
-        }
-    }
+.contact {
+  width: 50%;
+  @include padding;
 }

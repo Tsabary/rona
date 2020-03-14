@@ -20,7 +20,7 @@
     height: 3rem;
     background-color: white;
     box-shadow: 0 0.2rem 1rem rgba(149, 146, 187, 0.205);
-    border-radius: 5rem;
+    border-radius: $borderRadius;
     cursor: pointer;
     transition: all 0.4s;
     &::before {
@@ -30,7 +30,7 @@
       width: 2.4rem;
       margin: 0.3rem auto 0.3rem 0.3rem;
       transition: all 0.4s;
-      border-radius: 5rem;
+      border-radius: $borderRadius;
       background-color: white;
       box-shadow: 0 0.2rem 3rem rgb(216, 216, 216);
     }

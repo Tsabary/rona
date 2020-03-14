@@ -2,7 +2,7 @@ import "./styles.scss";
 import React from "react";
 // import Highlight from "../highlight"; //that's my alternative solution but it has it's own issue
 import ReactTooltip from "react-tooltip";
-import { MyHighlight } from "../../../../helpers";
+import { MyHighlight } from "../../../../utils";
 
 const SingleResult = ({ searchTerm, result }) => {
   return (

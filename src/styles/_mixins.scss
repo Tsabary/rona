@@ -1,0 +1,61 @@
+@mixin heading {
+  font-family: $fontBold;
+  font-weight: 900;
+  color: $mainColorBlack;
+}
+
+@mixin padding {
+  padding: 15rem 10rem;
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 800px) {
+    @content;
+  }
+}
+
+@mixin image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@mixin centeredFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin resize($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin section {
+  width: 100vw;
+  margin-left: -10rem;
+  margin-top: 10rem;
+  padding: 3rem 10% 5rem 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin section-2 {
+  clip-path: polygon(0 13%, 95% 0, 87% 100%, 0% 100%);
+  height: 50rem;
+  @include section;
+}
+
+@mixin section-1 {
+  clip-path: polygon(5% 0%, 100% 13%, 100% 100%, 13% 100%);
+  height: 50rem;
+
+  @include section;
+}

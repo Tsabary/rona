@@ -1,3 +1,4 @@
+import './styles.scss';
 import React from "react";
 import BoxedButton from "../../formComponents/boxedButton";
 import { Link } from "react-router-dom";

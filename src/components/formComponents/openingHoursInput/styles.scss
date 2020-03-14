@@ -20,7 +20,7 @@
     background-color: white;
     padding: 1rem 2rem;
     box-shadow: 0 0.2rem 1rem $greyLight;
-    border-radius: 2rem;
+    border-radius: $borderRadius;
     cursor: pointer;
   }
   &__input {

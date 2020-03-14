@@ -1,6 +1,8 @@
 @import "../../../styles/imports";
 
 .feed {
+  @include padding;
+
   &__feed {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -9,7 +11,7 @@
 }
 
 .item {
-  border-radius: 3rem;
+  border-radius: $borderRadius;
   box-shadow: 0 1rem 3rem rgb(180, 180, 180);
   overflow: hidden;
   &__info {

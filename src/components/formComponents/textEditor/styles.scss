@@ -11,13 +11,13 @@
   border: none;
   background-color: white;
   box-shadow: 0 0.2rem 2rem rgb(228, 228, 228);
-  border-radius: 3rem;
+  border-radius: $borderRadius;
   display: block;
 
   input[type="button"] {
     border: 1px solid #eee;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: $borderRadius;
     cursor: pointer;
     margin-right: 2px;
     margin-bottom: 2px;

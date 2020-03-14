@@ -1,0 +1,50 @@
+@import "../../../styles/imports";
+
+.tag {
+  display: inline-block;
+  font-family: $font;
+  padding: 1rem 2rem;
+  border-radius: $borderRadius;
+  width: max-content;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  user-select: none;
+  &-suggestion{
+    background-color: white;
+    color: $mainColor;
+    border: $mainColor 1px solid;
+    &__count{
+      color: $grey;
+
+    }
+  }
+
+  &-selected{
+    background-color: $mainColor;
+    color: white;
+  }
+
+}
+
+.tags {
+  width: 100%;
+  // display: flex;
+
+  &__container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr max-content;
+  }
+
+  &__submit {
+    width: max-content;
+    height: max-content;
+    font-family: $font;
+    background-color: $mainColor;
+    padding: 1rem 2rem;
+    border-radius: $borderRadius;
+    color: white;
+    cursor: pointer;
+  }
+}

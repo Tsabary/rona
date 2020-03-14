@@ -4,33 +4,56 @@ import {
   FETCH_SINGLE,
   FETCH_USERS,
   FETCH_SINGLE_USER,
-  SET_PAGE
+  SET_PAGE,
+  FETCH_POSITIONS,
+  FETCH_SINGLE_POSITION
 } from "./types";
 
 const db = firebase.firestore();
 const storageRef = firebase.storage().ref();
 
-export const logIn = (email, password) => () => {
-  console.log("logIn");
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(() => {
-      window.location.hash = "";
-    });
-};
+// export const logIn = (email, password) => () => {
+//   console.log("logIn");
+//   firebase
+//     .auth()
+//     .signInWithEmailAndPassword(email, password)
+//     .then(() => {
+//       window.location.hash = "";
+//     });
+// };
 
 export const logOut = () => () => {
   firebase.auth().signOut();
 };
 
-export const signUp = (email, password, setSent) => () => {
+export const signUp = (email, password, setSubmitting, setFormError) => () => {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(result => {
       result.user.sendEmailVerification();
-      setSent(true);
+      setSubmitting(2);
+    })
+    .catch(err => {
+      if (err.code === "auth/email-already-in-use") {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(() => {
+            setSubmitting(3);
+          })
+          .catch(err => {
+            console.log("login error:", err);
+
+            if(err.code === "auth/wrong-password"){
+              setSubmitting(0);
+              setFormError("Wrong password")
+            }
+          });
+      } else {
+        console.log("signup error:", err);
+        setSubmitting(4);
+      }
     });
 };
 
@@ -75,6 +98,34 @@ export const fetchAllItems = () => async dispatch => {
       payload: []
     });
   }
+};
+
+
+export const fetchPositions = () => async dispatch => {
+  const data = await db.collection("positions").get();
+
+  dispatch({
+    type: FETCH_POSITIONS,
+    payload: !!data.docs
+      ? data.docs.map(doc => {
+          return doc.data();
+        })
+      : []
+  });
+};
+
+export const fetchSinglePosition = id => async dispatch => {
+  const data = await db
+    .collection("positions")
+    .doc(id)
+    .get();
+
+  // setPosition(data.data());
+
+  dispatch({
+    type: FETCH_SINGLE_POSITION,
+    payload: data.data() ? data.data() : {}
+  });
 };
 
 export const fetchSingleItem = (id, setEvent) => async dispatch => {

@@ -1,0 +1,118 @@
+@import "../../styles/imports";
+
+.social {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(5, min-content);
+  margin-top: 3rem;
+
+  &__icon {
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
+    fill: white;
+    
+    &--facebook {
+      :hover .social__icon--dribbble-icon {
+        fill: $facebookColor;
+        transform: rotate(1080deg);
+      }
+    }
+    &--instagram {
+      &-icon {
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      :hover .social__icon--instagram-icon {
+        fill: $instagramColor;
+        transform: rotate(1080deg);
+      }
+    }
+
+    &--linkedin {
+      &-icon {
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      :hover .social__icon--linkedin-icon {
+        fill: $linkedinColor;
+        transform: rotate(1080deg);
+      }
+    }
+
+    &--github {
+      &-icon {
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      :hover .social__icon--github-icon {
+        fill: $githubColor;
+        transform: rotate(1080deg);
+      }
+    }
+
+    &--dribbble {
+      &-icon {
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      :hover .social__icon--dribbble-icon {
+        fill: $dribbbleColor;
+        transform: rotate(1080deg);
+      }
+    }
+
+    &--email {
+      &-icon {
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      :hover .social__icon--email-icon {
+        fill: $mainColor;
+        transform: rotate(1080deg);
+      }
+    }
+
+    &--twitter {
+      &-icon {
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      :hover .social__icon--twitter-icon {
+        fill: $twitterColor;
+        transform: rotate(1080deg);
+      }
+    }
+  }
+}
+
+// .social {
+//   display: grid;
+//   grid-gap: 2rem;
+//   width: 10rem;
+//   height: 10rem;
+//   grid-template-columns: repeat(2, min-content);
+//   margin-top: 3rem;
+//   background-color: yellow;
+
+//   &__icon {
+//     height: 3rem;
+//     width: 3rem;
+//     fill: white;
+//     cursor: pointer;
+
+//     &--instagram {
+//       &-icon {
+//         transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+//       }
+//       :hover .social__icon--instagram-icon {
+//         fill: $instagramColor;
+//         transform: rotate(1080deg);
+//       }
+//     }
+
+//     &--twitter {
+//       &-icon {
+//         transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+//       }
+//       :hover .social__icon--twitter-icon {
+//         fill: $twitterColor;
+//         transform: rotate(1080deg);
+//       }
+//     }
+//   }
+// }

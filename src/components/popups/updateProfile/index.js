@@ -52,14 +52,13 @@ const UpdateProfile = ({ updateProfile }) => {
 
   return (
     <div className="popup" id="update-profile">
-      <a className="popup__close" href="#">
-        Close
-      </a>
       <div className="popup__container">
+        <a className="popup__close" href="#">
+          <div />
+          Close
+        </a>
         <div className="popup__title">Update your profile</div>
-        <form
-          onSubmit={() => updateProfile(values, currentUser, imageObj)}
-        >
+        <form onSubmit={() => updateProfile(values, currentUser, imageObj)}>
           <label htmlFor="update-profile-image" className="new-event__label">
             <div className="round-image__container">
               <img

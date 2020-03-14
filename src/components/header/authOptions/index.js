@@ -7,9 +7,9 @@ import BoxedButton from "../../formComponents/boxedButton";
 const AuthOptions = () => {
   return (
     <div className="auth-options">
-    <a href="#log-in">
+    {/* <a href="#log-in">
       <TextButton text="Log in" />
-    </a>
+    </a> */}
     <a href="#sign-up">
       <BoxedButton text="Join now" />
     </a>

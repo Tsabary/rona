@@ -1,29 +1,74 @@
 import "./styles.scss";
-import React from "react";
+import React, { useState } from "react";
+import InputField from "../../formComponents/inputField";
+import TextArea from "../../formComponents/textArea";
 
 const Contact = () => {
+  const [values, setValues] = useState({
+    email: "",
+    content: ""
+  });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const variables = {
+      message_html: values.content,
+      from_email: values.email
+    };
+
+    window.emailjs
+      .send("gmail", "CHANGE_THIS_TO_TEMPLATE_NAME", variables, "CHANGE_THIS_TO_YOUR_NEW_USER_ID")
+      .then(res => {
+        setSent(true);
+        console.log("Email successfully sent!");
+      })
+      .catch(err =>
+        console.error(
+          "Oh well, you failed. Here some thoughts on the error that occured:",
+          err
+        )
+      );
+
+    setValues({});
+  };
+
   return (
-    <div className="contact">
-      <h2>Trying to reach us?</h2>
+    <div className="contact medium-margin-bottom">
+    <h2>
+      Do you have any questions? Suggestions?
+      <br />
+      Experiencing any bugs? We're here for you.
+    </h2>
 
-      <div className="paragraph centered-text">
-        Get in touch via email or contact us on our social media accounts
-      </div>
+    {!sent ? (
+      <form onSubmit={handleSubmit} className="small-margin-top">
+        <InputField
+          type="email"
+          placeHolder="Email address"
+          value={values.email}
+          onChange={email => setValues({ ...values, email })}
+          label="Email"
+        />
 
-      <div className="paragraph centered-text">frothinweirdos@gmail.com</div>
-      <div className="social centered">
-        <a href="https://www.facebook.com/frothinweirdos" target="_blank">
-          <svg className="social__icon social__icon--facebook">
-            <use xlinkHref="./sprite.svg#icon-facebook"></use>
-          </svg>
-        </a>
-        <a href="https://www.instagram.com/frothinweirdos/" target="_blank">
-          <svg className="social__icon social__icon--instagram">
-            <use xlinkHref="./sprite.svg#icon-instagram"></use>
-          </svg>
-        </a>
+        <TextArea
+          type="text"
+          placeHolder="What would you like to tell us?"
+          value={values.content}
+          onChange={content => setValues({ ...values, content })}
+          label="What would you like to tell us?"
+        />
+        <button type="submit" className="boxed-button small-margin-top justify-end">
+          Send
+        </button>
+      </form>
+    ) : (
+      <div>
+        Thank you! We've received your message and would get in touch soon!
       </div>
-    </div>
+    )}
+  </div>
   );
 };
 

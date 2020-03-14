@@ -1,0 +1,45 @@
+@import "../../../styles/imports";
+
+.apply {
+  @include padding;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7rem;
+
+  &__upload-label {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+  }
+
+  &__section {
+    &-title {
+      font-size: 3rem;
+      font-family: $fontBold;
+      color: $mainColorBlack;
+    }
+    &-body {
+      margin-top: 3rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-items: stretch;
+  }
+
+  &__success{
+    width: 80%;
+    margin: auto;
+    margin-top: 7rem;
+    font-size: 4rem;
+    font-family: $fontBold;
+    color: $mainColorBlack;
+    line-height: 6rem;
+  }
+}

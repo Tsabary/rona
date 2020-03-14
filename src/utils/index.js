@@ -39,3 +39,12 @@ export const multipleParagraphs = (array, style) => {
     );
   });
 };
+
+
+export const addLineBreaks = string =>
+  string.split("|").map((text, index) => (
+    <div key={`${text}-${index}`}>
+      {text}
+      <br />
+    </div>
+  ));

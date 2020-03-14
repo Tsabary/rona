@@ -1,2 +1,12 @@
-$font : GilroyLight;
-$fontBold : GilroyBold;
+@import './variables';
+
+@font-face {
+    font-family: $fontBold;
+    src: local($fontBold),
+      url(../fonts/Gilroy-ExtraBold.otf) format("opentype");
+  }
+  
+  @font-face {
+    font-family: $font;
+    src: local($font), url(../fonts/Gilroy-Light.otf) format("opentype");
+  }

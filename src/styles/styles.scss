@@ -1,48 +1,32 @@
 @import './imports';
 
-@font-face {
-  font-family: $fontBold;
-  src: local($fontBold),
-    url(../fonts/Gilroy-ExtraBold.otf) format("opentype");
-}
-
-@font-face {
-  font-family: $font;
-  src: local($font), url(../fonts/Gilroy-Light.otf) format("opentype");
-}
-
 a {
   text-decoration: none;
 }
 
 h1 {
-  font-family: $fontBold;
-  font-weight: 900;
+  @include heading;
+
   font-size: 5rem;
   line-height: 8rem;
   text-align: center;
-  color: $greyDark;
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
 h2 {
-  font-family: $fontBold;
-  font-weight: 900;
-  font-size: 4rem;
+  @include heading;
+  font-size: 3rem;
   line-height: 6rem;
-  text-align: center;
-  color: $greyDark;
   margin-top: 3.5rem;
   margin-bottom: 1.5rem;
 }
 
 h3 {
-  font-family: $fontBold;
-  font-weight: 900;
+  @include heading;
+
   font-size: 3rem;
   line-height: 5rem;
   text-align: center;
-  color: $greyDark;
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
@@ -73,6 +57,39 @@ h3 {
   justify-content: center;
 }
 
+.justify-end {
+  width: max-content;
+  margin-left: auto;
+}
+
+.section-1 {
+  @include section-1;
+}
+
+.section-2 {
+  @include section-2;
+}
+
+
+
+.message {
+  &-bold {
+    font-family: $fontBold;
+    font-size: 5rem;
+    line-height: 7rem;
+    color: $mainColorDarkest;
+  }
+  &-body {
+    font-size: 2.5rem;
+    line-height: 5rem;
+    color: $mainColorLight;
+  }
+  &-ill {
+    max-width: 40vw;
+    max-height: 40vh;
+  }
+}
+
 .bold {
   &-700 {
     font-weight: 700;
@@ -100,15 +117,13 @@ h3 {
   }
 }
 
+.form-error {
+  color: red;
+}
+
 .cover-image {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  @include image;
+
   &__container {
     width: 100%;
     padding-top: 52.35%;
@@ -118,14 +133,8 @@ h3 {
 }
 
 .round-image {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  @include image;
+
   &__container {
     width: 40%;
     padding-top: 40%;
@@ -135,10 +144,10 @@ h3 {
     margin: auto;
     border: white solid 0.5rem;
     box-shadow: 0 0.2rem 1rem rgb(170, 170, 170);
-    transition: all .2s cubic-bezier(1, 0, 0, 1);
+    transition: all 0.2s cubic-bezier(1, 0, 0, 1);
 
-    &--growing{
-      &:hover{
+    &--growing {
+      &:hover {
         width: 45%;
         padding-top: 45%;
       }
@@ -180,53 +189,68 @@ h3 {
 }
 
 .popup {
-  display: grid;
+  display: none;
   width: calc(100% - 12rem);
+  max-width: 60%;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
-  opacity: 0;
   transition: all 0.2s;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.75);
+  margin-top: 8rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include resize(800px) {
+    max-width: 80%;
+  }
+
+  @include resize(600px) {
+    max-width: 95%;
+  }
+
   &:target {
-    visibility: visible;
-    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__close {
-    margin-top: 6rem;
-    margin-right: 8rem;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    justify-self: stretch;
+    width: 100%;
+    margin-top: 0rem;
     font-family: $font;
     font-size: 1.4rem;
-    color: $greyDark;
-    justify-self: right;
+    color: $greyDarkest;
     cursor: pointer;
     &:hover {
       color: $mainColor;
     }
   }
   &__container {
-    min-width: 50%;
-    width: 90rem;
-    max-width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-
     z-index: 10;
-    margin: 2rem 2rem 4rem 2rem;
+    margin: 3rem 2rem 8rem 2rem;
     padding: 5rem 8rem;
-    border-radius: 3rem;
+    // border-radius: 3rem;
     box-shadow: 0 0.2rem 9rem rgb(228, 228, 228);
     background-color: white;
+    @include resize(600px) {
+      padding: 5rem;
+    }
   }
 
   &__title {
     text-align: center;
     font-family: $fontBold;
     font-size: 5rem;
-    color: $greyDark;
-    margin-bottom: 3rem;
+    color: $mainColor;
+    margin-bottom: 6rem;
     margin-top: 3rem;
   }
 
@@ -255,7 +279,7 @@ h3 {
     font-family: $font;
     user-select: none;
     padding: 1.5rem 5rem 1.7rem 5rem;
-    border-radius: 5rem;
+    border-radius: $borderRadius;
     box-shadow: 0 0.2rem 1rem rgb(170, 170, 170);
     border: none;
     cursor: pointer;

@@ -1,9 +1,24 @@
+
+// FONTS //
+
+
+$font: GilroyLight;
+$fontBold: GilroyBold;
+
+
+
+// COLORS //
+
+
 $mainColor: #AB2087;
 $mainColorLightest: lighten($mainColor, 30%);
 $mainColorLight: lighten($mainColor, 15%);
 $mainColorDark: darken($mainColor, 15%);
 $mainColorDarkest: darken($mainColor, 30%);
 $mainColorTransparent: rgba(90, 50, 100, 0.05);
+
+$mainColorSuperLight: #fbeaff;
+$mainColorBlack: #051b3d;
 
 $grey: #ababab;
 $greyLightest: lighten($grey, 50%);
@@ -16,5 +31,14 @@ $instagramColor: #f2003c;
 $linkedinColor: #0e76a8;
 $dribbbleColor: #ea4c89;
 $githubColor: #505050;
+$twitterColor: #00acee ;
 
 $gradientColor: linear-gradient($mainColor, $mainColorDark);
+
+
+
+
+
+// UNITS //
+
+$borderRadius : .5rem;
