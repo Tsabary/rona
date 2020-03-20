@@ -1,49 +1,26 @@
 import "./styles.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import { fetchAllItems } from "../../../actions";
+import { fetchAllPosts } from "../../../actions";
+import Post from "./post";
 
-const Feed = ({ items, fetchAllItems }) => {
+const Feed = ({ posts, fetchAllPosts }) => {
+
   useEffect(() => {
-    fetchAllItems();
+    fetchAllPosts();
   }, []);
 
-  const createMarkup = content => {
-    return { __html: content };
-  };
-
   const renderItems = () => {
-    return items
-      .filter(item => {
-        return item.is_public === true;
-      })
-      .map(item => {
-        return (
-          <Link to={`/item/${item.id}`} className="item" key={item.id}>
-            <div className="cover-image__container">
-              <img className="cover-image" src={item.image} />
-            </div>
-            <div className="item__info">
-              <div className="item__title">{item.title}</div>
-              <div className="item__summary">{item.summary}</div>
-
-              <div
-                className="item__detail"
-                dangerouslySetInnerHTML={createMarkup(item.content)}
-              />
-            </div>
-          </Link>
-        );
-      });
+    return posts.map(post => {
+      return <Post post={post} />;
+    });
   };
 
   return (
     <div className="feed">
-      <h2>feed</h2>
-      {!!items.length ? (
-        <div className="feed__feed medium-margin-top">{renderItems()}</div>
+      {!!posts.length ? (
+        renderItems()
       ) : (
         <div className="empty-feed small-margin-top centered">
           Nothing to see here
@@ -55,8 +32,8 @@ const Feed = ({ items, fetchAllItems }) => {
 
 const mapStateToProps = state => {
   return {
-    items: state.items
+    posts: state.posts
   };
 };
 
-export default connect(mapStateToProps, { fetchAllItems })(Feed);
+export default connect(mapStateToProps, { fetchAllPosts })(Feed);

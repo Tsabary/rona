@@ -35,8 +35,9 @@
 
   &__name {
     text-align: end;
-    margin-top: 1.8rem;
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    // margin: auto;
     transition: all 0.1s;
     user-select: none;
   }
@@ -44,6 +45,7 @@
     margin-top: 1rem;
     text-align: end;
     width: max-content;
+    color: $greyDark;
 
     &:hover ~ .user-options__option {
       opacity: 1;
@@ -52,6 +54,8 @@
     &:hover {
       opacity: 1;
       visibility: visible;
+      color: $mainColor;
+
     }
   }
 

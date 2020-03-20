@@ -10,7 +10,7 @@ $fontBold: GilroyBold;
 // COLORS //
 
 
-$mainColor: #AB2087;
+$mainColor: rgb(0, 153, 255);
 $mainColorLightest: lighten($mainColor, 30%);
 $mainColorLight: lighten($mainColor, 15%);
 $mainColorDark: darken($mainColor, 15%);

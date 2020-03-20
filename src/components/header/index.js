@@ -8,7 +8,6 @@ import { setCurrentPage } from "../../actions";
 
 
 import { AuthContext } from "../../providers/Auth";
-import Menu from "./menu";
 import AuthOptions from "./authOptions";
 import UserOptions from "./userOptions";
 
@@ -37,14 +36,10 @@ const Header = ({ setCurrentPage }) => {
     <div className="header">
       <div className="header__logo-container">
         <div className="header__logo-container" onClick={handleChange}>
-          {/* <div className="header__logo" /> */}
-          <div className="header__title">Brand</div>
+          <div className="header__title">Rona</div>
         </div>
       </div>
 
-      <div className="header__menu">
-        <Menu />
-      </div>
       <div className="header__auth">{renderAuth()}</div>
     </div>
   );

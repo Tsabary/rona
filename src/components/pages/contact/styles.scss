@@ -3,4 +3,24 @@
 .contact {
   width: 50%;
   @include padding;
+
+  @include resize(1000px) {
+    width: 65%;
+  }
+
+  @include resize(900px) {
+    width: 75%;
+  }
+
+  @include resize(800px) {
+    width: 85%;
+  }
+
+  @include resize(700px) {
+    width: 95%;
+  }
+
+  @include resize(600px) {
+    width: 100%;
+  }
 }

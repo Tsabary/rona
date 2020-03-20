@@ -1,14 +1,14 @@
 import firebase from 'firebase';
 
 const config = {
-  apiKey: "AIzaSyBvcAhyLAqc05namFVG-gxYzjoX25nGGkg",
-  authDomain: "project-template-5c65a.firebaseapp.com",
-  databaseURL: "https://project-template-5c65a.firebaseio.com",
-  projectId: "project-template-5c65a",
-  storageBucket: "project-template-5c65a.appspot.com",
-  messagingSenderId: "550178105554",
-  appId: "1:550178105554:web:ba60faa7873d5076d7250b",
-  measurementId: "G-RF7N6HNHH5"
+  apiKey: "AIzaSyCDfwfZYXYpN6iJqtafYzoULyiOD88cg2c",
+  authDomain: "bdude-d4c05.firebaseapp.com",
+  databaseURL: "https://bdude-d4c05.firebaseio.com",
+  projectId: "bdude-d4c05",
+  storageBucket: "bdude-d4c05.appspot.com",
+  messagingSenderId: "301644723160",
+  appId: "1:301644723160:web:2709d1a8057e422d99b8ad",
+  measurementId: "G-ES17CQLX4D"
   };
 
 firebase.initializeApp(config);

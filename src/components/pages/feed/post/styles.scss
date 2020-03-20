@@ -1,0 +1,57 @@
+@import "../../../../styles/imports";
+
+.post {
+  @include basicContainer;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+
+  &__title {
+    font-family: $fontBold;
+    font-size: 2rem;
+    color: $mainColorBlack;
+  }
+
+  &__body {
+    color: $grey;
+  }
+  &__location {
+    color: $grey;
+    cursor: pointer;
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+
+  &__timestamp {
+    color: $grey;
+  }
+  &__author-name {
+    color: $grey;
+  }
+
+  &__remove {
+    color: $greyDark;
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+
+  &__details {
+    @include gridVariation;
+    grid-template-columns: repeat(2, max-content);
+    @include resize(700px) {
+      grid-template-columns:  1fr;
+    }
+  }
+
+  @include toggleConainer;
+
+  &__hidden {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

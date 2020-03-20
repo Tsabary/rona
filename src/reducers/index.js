@@ -1,14 +1,10 @@
 import { combineReducers } from "redux";
-import ItemsReducer from "./ItemsReducer";
-import UsersReducer from "./UsersReducer";
+import PostsReducer from "./PostsReducer";
 import PageReducer from "./PageReducer";
-import PositionsReducer from "./PositionsReducer";
-
+import MyPostsReducer from "./MyPostsReducer";
 
 export default combineReducers({
-  items: ItemsReducer,
-  users : UsersReducer,
-  page: PageReducer,
-  positions: PositionsReducer
-
+  posts: PostsReducer,
+  myPosts : MyPostsReducer,
+  page: PageReducer
 });

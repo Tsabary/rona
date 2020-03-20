@@ -8,19 +8,20 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
   firebase.auth().onAuthStateChanged(setCurrentUser);
-  
+
   useEffect(() => {
     if (currentUser) {
-      const fetchData = async () => {
-        const doc = await db
-          .collection("users")
-          .doc(currentUser.uid)
-          .get();
-
-        setCurrentUserProfile(doc.data());
-      };
-      fetchData();
+      db.collection("users")
+        .doc(currentUser.uid)
+        .get()
+        .then(doc => setCurrentUserProfile(doc.data()))
+        .catch(err => {
+          setCurrentUserProfile(null);
+        });
+    } else {
+      setCurrentUserProfile(null);
     }
+    window.location.hash = "";
   }, [currentUser]);
 
   return (

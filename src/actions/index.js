@@ -1,30 +1,16 @@
 import firebase from "../firebase";
 import {
-  FETCH_GROUP,
+  FETCH_POSTS,
   FETCH_SINGLE,
-  FETCH_USERS,
-  FETCH_SINGLE_USER,
+  NEW_POST,
+  DELETE_POST,
   SET_PAGE,
-  FETCH_POSITIONS,
-  FETCH_SINGLE_POSITION
+  FETCH_MY_POSTS,
+  DELETE_MY_POST
 } from "./types";
 
 const db = firebase.firestore();
 const storageRef = firebase.storage().ref();
-
-// export const logIn = (email, password) => () => {
-//   console.log("logIn");
-//   firebase
-//     .auth()
-//     .signInWithEmailAndPassword(email, password)
-//     .then(() => {
-//       window.location.hash = "";
-//     });
-// };
-
-export const logOut = () => () => {
-  firebase.auth().signOut();
-};
 
 export const signUp = (email, password, setSubmitting, setFormError) => () => {
   firebase
@@ -45,9 +31,9 @@ export const signUp = (email, password, setSubmitting, setFormError) => () => {
           .catch(err => {
             console.log("login error:", err);
 
-            if(err.code === "auth/wrong-password"){
+            if (err.code === "auth/wrong-password") {
               setSubmitting(0);
-              setFormError("Wrong password")
+              setFormError("Wrong password");
             }
           });
       } else {
@@ -55,6 +41,10 @@ export const signUp = (email, password, setSubmitting, setFormError) => () => {
         setSubmitting(4);
       }
     });
+};
+
+export const logOut = () => () => {
+  firebase.auth().signOut();
 };
 
 export const resendVerification = () => () => {
@@ -72,59 +62,30 @@ export const providerSignIn = provider => () => {
   }
 };
 
-export const updateProfile = (values, user, imageObj) => () => {
+export const updateProfile = (values, user, imageObj, updateLocaly) => () => {
   db.collection("users")
     .doc(user.uid)
-    .set(values, { merge: true });
-  storageRef.child(`images/user-avatars/${user.uid}`).put(imageObj);
+    .set(values, { merge: true })
+    .then(() => {
+      if (imageObj)
+        storageRef.child(`images/user-avatars/${user.uid}`).put(imageObj);
+      updateLocaly();
+      window.location.hash = "";
+    });
 };
 
-export const fetchAllItems = () => async dispatch => {
-  const data = await db.collection("items").get();
+export const newRequest = (values, reset) => dispatch => {
+  const newDoc = db.collection("posts").doc();
+  const post = { ...values, id: newDoc.id, timestamp: Date.now() };
 
-  if (data.docs !== undefined) {
-    const docsData = [];
-    data.docs.map(doc => {
-      docsData.push(doc.data());
-    });
+  newDoc.set(post).then(() => {
+    reset();
+    window.location.hash = "";
 
     dispatch({
-      type: FETCH_GROUP,
-      payload: docsData
+      type: FETCH_SINGLE,
+      payload: post
     });
-  } else {
-    dispatch({
-      type: FETCH_GROUP,
-      payload: []
-    });
-  }
-};
-
-
-export const fetchPositions = () => async dispatch => {
-  const data = await db.collection("positions").get();
-
-  dispatch({
-    type: FETCH_POSITIONS,
-    payload: !!data.docs
-      ? data.docs.map(doc => {
-          return doc.data();
-        })
-      : []
-  });
-};
-
-export const fetchSinglePosition = id => async dispatch => {
-  const data = await db
-    .collection("positions")
-    .doc(id)
-    .get();
-
-  // setPosition(data.data());
-
-  dispatch({
-    type: FETCH_SINGLE_POSITION,
-    payload: data.data() ? data.data() : {}
   });
 };
 
@@ -144,91 +105,41 @@ export const fetchSingleItem = (id, setEvent) => async dispatch => {
   }
 };
 
-export const fetchAllUsers = () => async dispatch => {
-  const data = await db.collection("users").get();
+export const fetchAllPosts = () => async dispatch => {
+  const data = await db.collection("posts").get();
 
-  if (data.docs !== undefined) {
-    const docsData = [];
-    data.docs.map(doc => {
-      docsData.push(doc.data());
-    });
-
-    dispatch({
-      type: FETCH_USERS,
-      payload: docsData
-    });
-  } else {
-    dispatch({
-      type: FETCH_USERS,
-      payload: []
-    });
-  }
+  dispatch({
+    type: FETCH_POSTS,
+    payload: !!data.docs ? data.docs.map(doc => doc.data()) : []
+  });
 };
 
-export const fetchSingleUser = (id, setEvent) => async dispatch => {
+export const removePost = post => dispatch => {
+  db.collection("posts")
+    .doc(post.id)
+    .delete();
+
+  // dispatch({
+  //   type: DELETE_MY_POST,
+  //   payload: post.id
+  // });
+
+  dispatch({
+    type: DELETE_POST,
+    payload: post.id
+  });
+};
+
+export const fetchMyPosts = userID => async dispatch => {
   const data = await db
-    .collection("users")
-    .doc(id)
+    .collection("posts")
+    .where("user_ID", "==", userID)
     .get();
 
-  // setEvent(data.data());
-
-  if (!!data) {
-    dispatch({
-      type: FETCH_SINGLE_USER,
-      payload: data.data()
-    });
-  }
-};
-
-export const newItem = (values, image, setValues) => () => {
-  const newDoc = db.collection("items").doc();
-
-  newDoc
-    .set({ ...values, id: newDoc.id })
-    .then(() => {
-      storageRef
-        .child(`images/items/${newDoc.id}`)
-        .put(image)
-        .then(result => {
-          console.log(result);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    })
-    // .then(() => {
-    //   setValues({});
-    // })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-export const updateItem = (values, image, setValues) => () => {
-  
-  console.log(image);
-  db.collection("items")
-    .doc(values.id)
-    .set(values)
-    .then(() => {
-      if (!!image)
-        storageRef
-          .child(`images/items/${values.id}`)
-          .put(image)
-          .then(result => {
-            console.log(result);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-    })
-    // .then(() => {
-    //   setValues({});
-    // })
-    .catch(err => {
-      console.log(err);
-    });
+  dispatch({
+    type: FETCH_MY_POSTS,
+    payload: !!data.docs ? data.docs.map(doc => doc.data()) : []
+  });
 };
 
 export const setCurrentPage = value => {

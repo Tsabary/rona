@@ -11,27 +11,30 @@ import PlacesAutocomplete, {
 
 import { AuthContext } from "../../../providers/Auth";
 
-import { updateProfile } from "../../../actions";
+import { newRequest } from "../../../actions";
 
 import InputField from "../../formComponents/inputField";
 import TextArea from "../../formComponents/textArea";
 
-const UpdateProfile = ({ updateProfile }) => {
+const NewRequest = ({ newRequest }) => {
   const [values, setValues] = useState({});
-  const { currentUserProfile, setCurrentUserProfile, currentUser } = useContext(
-    AuthContext
-  );
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageObj, setImageObj] = useState(null);
+  const { currentUserProfile, currentUser } = useContext(AuthContext);
   const [address, setAddress] = useState(null);
 
-  const handleImageChange = e => {
-    if (e.target.files[0]) {
-      const image = e.target.files[0];
-      setSelectedImage(URL.createObjectURL(image));
-      setImageObj(image);
+  useEffect(() => {
+    if (!!currentUserProfile) {
+      setValues({
+        user_ID: currentUserProfile.uid,
+        user_name: currentUserProfile.name,
+        user_avatar: currentUserProfile.avatar,
+        address_text: currentUserProfile.address_text,
+        address_coords: currentUserProfile.address_coords,
+        phone_number: currentUserProfile.phone_number
+      });
+      if (currentUserProfile.address_text)
+        setAddress(currentUserProfile.address_text);
     }
-  };
+  }, [currentUserProfile]);
 
   const handleSelect = address => {
     setValues({ ...values, address });
@@ -51,64 +54,48 @@ const UpdateProfile = ({ updateProfile }) => {
       .catch(error => console.error("Error", error));
   };
 
-  useEffect(() => {
-    if (!!currentUserProfile) {
-      setValues(currentUserProfile);
-    }
-  }, [currentUserProfile]);
-
   return (
-    <div className="popup" id="update-profile">
+    <div className="popup" id="new-request">
       <div className="popup__container">
         <a className="popup__close" href="#">
           <div />
           Close
         </a>
-        <div className="popup__title">Update your profile</div>
+        <div className="popup__title">Make a Request</div>
         <form
           onSubmit={() =>
-            updateProfile(values, currentUser, imageObj, () =>
-              setCurrentUserProfile({
-                ...values,
-                avatar: selectedImage || currentUserProfile.avatar
-              })
+            newRequest(values, () =>
+              setValues({ ...values, title: "", body: "" })
             )
           }
         >
-          <label htmlFor="update-profile-image" className="new-event__label">
-            <div className="round-image__container round-image__container--profile-form">
-              <img
-                className="round-image clickable"
-                src={
-                  selectedImage ||
-                  (currentUserProfile && currentUserProfile.avatar) ||
-                  "../../imgs/logo.jpeg"
-                }
-              />
-            </div>
-          </label>
-          <input
-            id="update-profile-image"
-            className="update-profile__upload"
-            type="file"
-            onChange={handleImageChange}
+          <InputField
+            type="text"
+            placeHolder="Title"
+            value={values.title}
+            onChange={title => setValues({ ...values, title })}
+            label="Title"
+          />
+
+          <TextArea
+            type="text"
+            placeHolder="Can you add some more details that will help others wanting to assist?"
+            value={values.body}
+            onChange={body => setValues({ ...values, body })}
+            label="Extra details"
           />
 
           <InputField
             type="text"
             placeHolder="First name"
-            value={values.name}
-            onChange={name => setValues({ ...values, name })}
+            value={values.user_name}
+            onChange={user_name => setValues({ ...values, user_name })}
             label="First name"
           />
 
           <div className="small-margin-bottom">
             <PlacesAutocomplete
-              value={
-                address ||
-                (currentUserProfile && currentUserProfile.address_text) ||
-                ""
-              }
+              value={address || ""}
               onChange={address => setAddress(address)}
               onSelect={handleSelect}
             >
@@ -159,7 +146,7 @@ const UpdateProfile = ({ updateProfile }) => {
 
           <div className="popup__button medium-margin-top">
             <button type="submit" className="boxed-button">
-              Update
+              Post
             </button>
           </div>
         </form>
@@ -168,4 +155,4 @@ const UpdateProfile = ({ updateProfile }) => {
   );
 };
 
-export default connect(null, { updateProfile })(UpdateProfile);
+export default connect(null, { newRequest })(NewRequest);

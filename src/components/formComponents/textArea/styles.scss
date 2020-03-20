@@ -18,7 +18,7 @@
 
     transition: all 0.3s;
     &::-webkit-input-placeholder {
-      color: $greyLight;
+      color: $grey;
     }
     &:invalid {
       border-bottom: 2px solid rgb(216, 6, 6);

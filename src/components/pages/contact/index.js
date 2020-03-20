@@ -19,7 +19,7 @@ const Contact = () => {
     };
 
     window.emailjs
-      .send("gmail", "CHANGE_THIS_TO_TEMPLATE_NAME", variables, "CHANGE_THIS_TO_YOUR_NEW_USER_ID")
+      .send("gmail", "contact", variables, "user_fzDIZiprZ4VhK2PHjoxMi")
       .then(res => {
         setSent(true);
         console.log("Email successfully sent!");

@@ -55,6 +55,23 @@ const UserOptions = ({ logOut, resendVerification }) => {
             onClick={resendVerification}
           />
         )}
+        {currentUser.emailVerified ? (
+          <a className="user-options__option" href="#new-request">
+            <TextButton text="Make a request" />
+          </a>
+        ) : null}
+
+        {currentUser.emailVerified ? (
+          <Link className="user-options__option" to="/my-posts">
+            My Posts
+          </Link>
+        ) : null}
+
+        {currentUser.emailVerified ? (
+          <Link className="user-options__option" to="/contact">
+            Contact
+          </Link>
+        ) : null}
 
         <div className="user-options__option" onClick={() => logOut()}>
           <TextButton text="Logout" />

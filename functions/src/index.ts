@@ -24,7 +24,7 @@ exports.userCreated = functions.auth.user().onCreate(user => {
     promises.push(
       db.doc("users/" + user.uid).set({
         uid: user.uid,
-        name: user.providerData[0].displayName,
+        name: user.providerData[0].displayName.split(" ")[0],
         avatar: user.providerData[0].photoURL
       })
     );
@@ -43,7 +43,7 @@ exports.writeFileToDatabase = functions.storage.object().onFinalize(object => {
   return file
     .getSignedUrl({
       action: "read",
-      expires: "03-17-2025"
+      expires: "03-17-2100"
     })
     .then(results => {
       const url = results[0];
@@ -55,12 +55,6 @@ exports.writeFileToDatabase = functions.storage.object().onFinalize(object => {
             .collection("users")
             .doc(silcedPath[2])
             .set({ avatar: url }, { merge: true });
-
-        case "items":
-          return db
-            .collection("items")
-            .doc(silcedPath[2])
-            .set({ image: url }, { merge: true });
 
         default:
           return null;
