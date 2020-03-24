@@ -1,7 +1,7 @@
 import "./styles.scss";
 import React, { useEffect, useState, useContext } from "react";
 import { connect } from "react-redux";
-
+import {Link} from 'react-router-dom';
 import { fetchAllPosts } from "../../../actions";
 import Post from "./post";
 import { AuthContext } from "../../../providers/Auth";
@@ -21,16 +21,10 @@ const Feed = ({ posts, fetchAllPosts }) => {
   };
 
   return (
-    <div className="feed">
-      {currentUser && currentUser.emailVerified ? (
-        <a className="post-button" href="#new-request">
-          ...צריך עזרה עם
-        </a>
-      ) : (
-        <a className="post-button" href="#sign-up">
-          צריך עזרה עם...
-        </a>
-      )}
+    <div className="feed">  
+      <Link className="post-button" to={currentUser && currentUser.emailVerified ? "/new-request" : "/sign-up"}>
+        ...צריך עזרה עם
+      </Link>
 
       {!!posts.length ? (
         renderItems()
