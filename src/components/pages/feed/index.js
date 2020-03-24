@@ -24,11 +24,11 @@ const Feed = ({ posts, fetchAllPosts }) => {
     <div className="feed">
       {currentUser && currentUser.emailVerified ? (
         <a className="post-button" href="#new-request">
-          Make a request
+          ...צריך עזרה עם
         </a>
       ) : (
         <a className="post-button" href="#sign-up">
-          Make a request
+          צריך עזרה עם...
         </a>
       )}
 
