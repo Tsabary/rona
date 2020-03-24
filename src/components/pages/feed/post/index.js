@@ -10,7 +10,7 @@ import { removePost } from "../../../../actions";
 const Post = ({ post, removePost }) => {
   const { currentUser } = useContext(AuthContext);
 
-  const [isNumberVisible, setIsNumberVisible] = useState(false);
+  const [isDetailsVisible, setIsDetailsVisible] = useState(false);
 
   return (
     <div className="post">
@@ -24,15 +24,21 @@ const Post = ({ post, removePost }) => {
           <div className="round-image__container round-image__container--small">
             <img
               className="round-image"
+              src={`../imgs/${post.user_gender}.png`}
+            />
+            {/* <img
+              className="round-image"
               src={
                 post.user_avatar ||
                 "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
               }
-            />
+            /> */}
           </div>
           <div>
             <div className="post__author-name">{post.user_name}</div>
-            <span className="post__timestamp"><Moment fromNow>{post.timestamp}</Moment></span>
+            <span className="post__timestamp">
+              <Moment fromNow>{post.timestamp}</Moment>
+            </span>
           </div>
           {currentUser && post.user_ID === currentUser.uid ? (
             <label className="text-button" htmlFor={`post-checkbox` + post.id}>
@@ -40,7 +46,41 @@ const Post = ({ post, removePost }) => {
             </label>
           ) : null}
         </div>
-        <div className="post__title">{post.title}</div>
+
+        <details>
+          <summary>
+            <div className="post__title">{post.title}</div>
+          </summary>
+          <div className="post__body tiny-margin-top">{post.body}</div>
+
+          <div className="post__details tiny-margin-top"></div>
+          {!currentUser ? (
+            <a href="#sign-up">Show Details</a>
+          ) : isDetailsVisible ? (
+            <div>
+              <a
+                className="post__location"
+                target="_blank"
+                href={
+                  "http://www.google.com/maps/place/" +
+                  post.address_coords.latitude +
+                  "," +
+                  post.address_coords.longitude
+                }
+              >
+                Location: {post.address_text}
+              </a>
+              <div className="post__number-visible">{post.phone_number}</div>
+            </div>
+          ) : (
+            <div
+              className="post_show-details"
+              onClick={setIsDetailsVisible}
+            >Show Details</div>
+          )}
+        </details>
+
+        {/* <div className="post__title">{post.title}</div>
         <div className="post__body tiny-margin-top">{post.body}</div>
         <div className="post__details tiny-margin-top">
           <a
@@ -66,17 +106,21 @@ const Post = ({ post, removePost }) => {
               Show number
             </div>
           )}
-        </div>
+        </div> */}
       </span>
 
       <span className="post__hidden">
         <div>Are you sure you want to delete this post?</div>
         <div className="max-max small-margin-top">
-        <label className="text-button" htmlFor={`post-checkbox` + post.id}>
+          <label className="text-button" htmlFor={`post-checkbox` + post.id}>
             Cancel
           </label>
 
-          <label className="post__remove" htmlFor={`post-checkbox` + post.id}  onClick={() => removePost(post)}>
+          <label
+            className="post__remove"
+            htmlFor={`post-checkbox` + post.id}
+            onClick={() => removePost(post)}
+          >
             Delete
           </label>
         </div>

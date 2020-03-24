@@ -15,6 +15,7 @@ import { newRequest } from "../../../actions";
 
 import InputField from "../../formComponents/inputField";
 import TextArea from "../../formComponents/textArea";
+import IconOption from "../../formComponents/iconOption";
 
 const NewRequest = ({ newRequest }) => {
   const [values, setValues] = useState({});
@@ -69,6 +70,7 @@ const NewRequest = ({ newRequest }) => {
             )
           }
         >
+          I need help with:
           <InputField
             type="text"
             placeHolder="Title"
@@ -143,6 +145,19 @@ const NewRequest = ({ newRequest }) => {
             onChange={phone_number => setValues({ ...values, phone_number })}
             label="Phone Number"
           />
+
+          <div className="fr-fr">
+            <IconOption
+              id="male"
+              onClick={() => setValues({ ...values, gender: "male" })}
+              icon="male.png"
+            />
+            <IconOption
+              id="female"
+              onClick={() => setValues({ ...values, gender: "female" })}
+              icon="female.png"
+            />
+          </div>
 
           <div className="popup__button medium-margin-top">
             <button type="submit" className="boxed-button">

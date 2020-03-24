@@ -64,7 +64,7 @@ h3 {
 
 .message {
   &-bold {
-    font-family: $fontBold;
+    font-family: $fontBold, $fontHebrew;
     font-size: 5rem;
     line-height: 7rem;
     color: $mainColorDarkest;
@@ -273,7 +273,7 @@ h3 {
 
   &__title {
     text-align: center;
-    font-family: $fontBold;
+    font-family: $fontBold, $fontHebrew;
     font-size: 5rem;
     color: $mainColor;
     margin-bottom: 6rem;
@@ -288,7 +288,7 @@ h3 {
 }
 
 .empty-feed {
-  font-family: $fontBold;
+  font-family: $fontBold, $fontHebrew;
   color: $greyLight;
   font-size: 5rem;
   text-align: center;
@@ -344,6 +344,11 @@ h3 {
 .fr-max {
   @include gridVariation;
   grid-template-columns: 1fr max-content;
+}
+
+.fr-fr {
+  @include gridVariation;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .max-fr {
@@ -406,7 +411,7 @@ h3 {
   display: flex;
   color: $mainColorTransparent;
   font-size: 12rem;
-  font-family: $fontBold;
+  font-family: $fontBold, $fontHebrew;
   font-weight: 900;
   z-index: -5;
 }

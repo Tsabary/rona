@@ -1,5 +1,5 @@
 @mixin heading {
-  font-family: $fontBold;
+  font-family: $fontBold, $fontHebrew;
   font-weight: 900;
   color: $mainColorBlack;
 }

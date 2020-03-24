@@ -2,6 +2,23 @@
 
 .feed {
   @include padding;
+  position: relative;
 }
 
+.post-button {
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  z-index: 2000;
+  background-color: $mainColor;
+  padding: 1.5rem 2.5rem;
+  color: white;
+  border-radius: $borderRadius;
+  transition: all .15s;
+  box-shadow: 0 0.2rem 1rem rgb(170, 170, 170);
 
+  &:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1.4rem rgb(170, 170, 170);
+  }
+}

@@ -16,6 +16,7 @@ import { updateProfile } from "../../../actions";
 import InputField from "../../formComponents/inputField";
 import TextArea from "../../formComponents/textArea";
 
+
 const UpdateProfile = ({ updateProfile }) => {
   const [values, setValues] = useState({});
   const { currentUserProfile, setCurrentUserProfile, currentUser } = useContext(
@@ -75,7 +76,7 @@ const UpdateProfile = ({ updateProfile }) => {
             )
           }
         >
-          <label htmlFor="update-profile-image" className="new-event__label">
+          {/* <label htmlFor="update-profile-image" className="new-event__label">
             <div className="round-image__container round-image__container--profile-form">
               <img
                 className="round-image clickable"
@@ -92,7 +93,7 @@ const UpdateProfile = ({ updateProfile }) => {
             className="update-profile__upload"
             type="file"
             onChange={handleImageChange}
-          />
+          /> */}
 
           <InputField
             type="text"
