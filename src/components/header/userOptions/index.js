@@ -24,8 +24,8 @@ const UserOptions = ({ logOut, resendVerification }) => {
 
   return (
     <div className="user-options ">
-      <div className="flex-group">
-        <div className="user-options__name tiny-margin-right">
+      <div className="max-max">
+        <div className="user-options__name">
           {!!currentUserProfile ? currentUserProfile.name : currentUser.email}
         </div>
         <div className="user-options__image-container ">
@@ -39,38 +39,20 @@ const UserOptions = ({ logOut, resendVerification }) => {
         </div>
       </div>
       <div className="user-options__options">
-        {isAdmin ? (
-          <Link to="/admins" className="user-options__option">
-            <TextButton text="Option for admins" />
-          </Link>
-        ) : null}
+        <a className="user-options__option" href="#update-profile">
+          <TextButton text="פרופיל" />
+        </a>
 
-        {currentUser.emailVerified ? (
-          <a className="user-options__option" href="#update-profile">
-            <TextButton text="Edit profile" />
-          </a>
-        ) : (
-          <TextButton
-            text="Resend email verification"
-            onClick={resendVerification}
-          />
-        )}
+        <Link className="user-options__option" to="/my-posts">
+          הפרסומים שלי
+        </Link>
 
-
-        {currentUser.emailVerified ? (
-          <Link className="user-options__option" to="/my-posts">
-            My Posts
-          </Link>
-        ) : null}
-
-        {currentUser.emailVerified ? (
-          <Link className="user-options__option" to="/contact">
-            Contact
-          </Link>
-        ) : null}
+        <Link className="user-options__option" to="/contact">
+          יצירת קשר
+        </Link>
 
         <div className="user-options__option" onClick={() => logOut()}>
-          <TextButton text="Logout" />
+          <TextButton text="התנתקות" />
         </div>
       </div>
     </div>

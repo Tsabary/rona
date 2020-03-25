@@ -1,6 +1,8 @@
 import "./styles.scss";
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Moment from "react-moment";
+import "moment/locale/he";
+
 import { connect } from "react-redux";
 
 import { AuthContext } from "../../../../providers/Auth";
@@ -9,8 +11,6 @@ import { removePost } from "../../../../actions";
 
 const Post = ({ post, removePost }) => {
   const { currentUser } = useContext(AuthContext);
-
-  const [isDetailsVisible, setIsDetailsVisible] = useState(false);
 
   return (
     <div className="post">
@@ -24,30 +24,25 @@ const Post = ({ post, removePost }) => {
           <div className="round-image__container round-image__container--small">
             <img
               className="round-image"
-              src={`../imgs/${post.user_gender}.png`}
+              src={`https://api.adorable.io/avatars/285/${post.user_ID}.png`}
             />
-            {/* <img
-              className="round-image"
-              src={
-                post.user_avatar ||
-                "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-              }
-            /> */}
           </div>
           <div>
             <div className="post__author-name">{post.user_name}</div>
             <span className="post__timestamp">
-              <Moment fromNow>{post.timestamp}</Moment>
+              <Moment fromNow locale="he">
+                {post.timestamp}
+              </Moment>
             </span>
           </div>
           {currentUser && post.user_ID === currentUser.uid ? (
             <label className="text-button" htmlFor={`post-checkbox` + post.id}>
-              Remove post
+              מחיקה
             </label>
           ) : null}
         </div>
 
-        <details>
+        {/* <details>
           <summary>
             <div className="post__title">{post.title}</div>
           </summary>
@@ -73,17 +68,16 @@ const Post = ({ post, removePost }) => {
               <div className="post__number-visible">{post.phone_number}</div>
             </div>
           ) : (
-            <div
-              className="post_show-details"
-              onClick={setIsDetailsVisible}
-            >Show Details</div>
+            <div className="post_show-details" onClick={setIsDetailsVisible}>
+              Show Details
+            </div>
           )}
-        </details>
+        </details> */}
 
-        {/* <div className="post__title">{post.title}</div>
+        <div className="post__title">{post.title}</div>
         <div className="post__body tiny-margin-top">{post.body}</div>
         <div className="post__details tiny-margin-top">
-          <a
+          {/* <a
             className="post__location"
             target="_blank"
             href={
@@ -94,9 +88,9 @@ const Post = ({ post, removePost }) => {
             }
           >
             Location: {post.address_text}
-          </a>
+          </a> */}
 
-          {isNumberVisible ? (
+          {/* {isNumberVisible ? (
             <div className="post__number-visible">{post.phone_number}</div>
           ) : (
             <div
@@ -105,15 +99,15 @@ const Post = ({ post, removePost }) => {
             >
               Show number
             </div>
-          )}
-        </div> */}
+          )} */}
+        </div>
       </span>
 
       <span className="post__hidden">
-        <div>Are you sure you want to delete this post?</div>
+        <div>בטוח שברצונך למחוק את הפוסט?</div>
         <div className="max-max small-margin-top">
           <label className="text-button" htmlFor={`post-checkbox` + post.id}>
-            Cancel
+            ביטול
           </label>
 
           <label
@@ -121,7 +115,7 @@ const Post = ({ post, removePost }) => {
             htmlFor={`post-checkbox` + post.id}
             onClick={() => removePost(post)}
           >
-            Delete
+            מחיקה
           </label>
         </div>
       </span>

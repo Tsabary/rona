@@ -2,9 +2,12 @@
 
 .post {
   @include basicContainer;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   margin-bottom: 4rem;
   position: relative;
   overflow: hidden;
+  direction: rtl;
 
   &__title {
     font-family: $fontBold, $fontHebrew;

@@ -38,7 +38,9 @@ exports.userCreated = functions.auth.user().onCreate(user => {
     promises.push(
       db.doc("users/" + user.uid).set({
         uid: user.uid,
-        name: user.providerData[0].displayName.split(" ")[0],
+        name: user.providerData[0].displayName
+          ? user.providerData[0].displayName.split(" ")[0]
+          : "",
         avatar: user.providerData[0].photoURL,
         email: user.email
       })

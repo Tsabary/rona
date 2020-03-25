@@ -2,7 +2,7 @@ import "./styles.scss";
 import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { useToasts } from 'react-toast-notifications'
+import { useToasts } from "react-toast-notifications";
 import firebase from "firebase";
 
 import PlacesAutocomplete, {
@@ -16,10 +16,10 @@ import { newRequest } from "../../../actions";
 
 import InputField from "../../formComponents/inputField";
 import TextArea from "../../formComponents/textArea";
-import IconOption from "../../formComponents/iconOption";
 
 const NewRequest = ({ newRequest }) => {
-  const [values, setValues] = useState({title:'אני צריך עזרה ב'});
+  const [values, setValues] = useState({ title: "אני צריך עזרה ב" });
+
   const { currentUserProfile, currentUser } = useContext(AuthContext);
   const [address, setAddress] = useState(null);
   const { addToast } = useToasts();
@@ -33,7 +33,7 @@ const NewRequest = ({ newRequest }) => {
         address_text: currentUserProfile.address_text,
         address_coords: currentUserProfile.address_coords,
         phone_number: currentUserProfile.phone_number,
-        title: 'אני צריך עזרה ב'
+        title: "אני צריך עזרה ב"
       });
       if (currentUserProfile.address_text)
         setAddress(currentUserProfile.address_text);
@@ -42,7 +42,7 @@ const NewRequest = ({ newRequest }) => {
 
   const handleSelect = address => {
     setValues({ ...values, address });
-
+    setAddress(address);
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
@@ -60,10 +60,9 @@ const NewRequest = ({ newRequest }) => {
 
   return (
     <div className="popup" id="new-request">
- 
-        <div className="popup__container">
-          <a className="popup__close" href="#">
-            <div />
+      <div className="popup__container">
+        <a className="popup__close" href="#">
+          <div />
           Close
         </a>
         <div className="popup__title">Make a Request</div>
@@ -74,12 +73,12 @@ const NewRequest = ({ newRequest }) => {
             }
 
             newRequest(values, () => {
-              addToast('בקשה נשלחה', {
-                appearance: 'success',
-                autoDismiss: true,
-              })
-              setValues({ ...values, title: "אני צריך עזרה ב", body: "" })
-            })
+              addToast("בקשה נשלחה", {
+                appearance: "success",
+                autoDismiss: true
+              });
+              setValues({ ...values, title: "אני צריך עזרה ב", body: "" });
+            });
           }}
         >
           I need help with:
@@ -91,7 +90,6 @@ const NewRequest = ({ newRequest }) => {
             label="Title"
             required={true}
           />
-
           <TextArea
             type="text"
             placeHolder="Can you add some more details that will help others wanting to assist?"
@@ -100,7 +98,6 @@ const NewRequest = ({ newRequest }) => {
             label="Extra details"
             required={true}
           />
-
           <InputField
             type="text"
             placeHolder="First name"
@@ -109,7 +106,6 @@ const NewRequest = ({ newRequest }) => {
             label="First name"
             required={true}
           />
-
           <div className="small-margin-bottom">
             <PlacesAutocomplete
               value={address || ""}
@@ -123,7 +119,8 @@ const NewRequest = ({ newRequest }) => {
                 loading
               }) => (
                 <div>
-                  <input required
+                  <input
+                    required
                     {...getInputProps({
                       placeholder: "What's your address?",
                       className: "input-field__input"
@@ -152,7 +149,6 @@ const NewRequest = ({ newRequest }) => {
               )}
             </PlacesAutocomplete>
           </div>
-
           <InputField
             type="text"
             placeHolder="Phone Number"
@@ -160,18 +156,15 @@ const NewRequest = ({ newRequest }) => {
             onChange={phone_number => setValues({ ...values, phone_number })}
             label="Phone Number"
             required={true}
-            pattern={'[0-9]{10}'}
+            pattern={"[0-9]{10}"}
           />
-
-
-
           <div className="popup__button medium-margin-top">
             <button type="submit" className="boxed-button">
               שליחה
             </button>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
