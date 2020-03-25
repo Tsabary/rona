@@ -7,6 +7,7 @@ import Header from "./header";
 
 import { AuthProvider } from "../providers/Auth";
 
+import { ToastProvider } from 'react-toast-notifications'
 import history from "../history";
 
 import SignUp from "./popups/signUp";
@@ -21,19 +22,21 @@ import Contact from "./pages/contact";
 const App = () => {
   return (
     <AuthProvider>
-      <Router history={history}>
-        <div className="app">
-          <SignUp />
-          <UpdateProfile />
-          <NewRequest />
-          <Header />
-          <Switch>
-            <Route path="/" exact component={Feed} />
-            <Route path="/my-posts" exact component={MyPosts} />
-            <Route path="/contact" exact component={Contact} />
-          </Switch>
-        </div>
-      </Router>
+      <ToastProvider>
+        <Router history={history}>
+          <div className="app">
+            <SignUp />
+            <UpdateProfile />
+            <NewRequest />
+            <Header />
+            <Switch>
+              <Route path="/" exact component={Feed} />
+              <Route path="/my-posts" exact component={MyPosts} />
+              <Route path="/contact" exact component={Contact} />
+            </Switch>
+          </div>
+        </Router>
+      </ToastProvider>
     </AuthProvider>
   );
 };
