@@ -1,5 +1,5 @@
 import "./styles.scss";
-import React, { useContext } from "react";
+import React, { useContext, useState} from "react";
 import Moment from "react-moment";
 import "moment/locale/he";
 
@@ -8,9 +8,14 @@ import { connect } from "react-redux";
 import { AuthContext } from "../../../../providers/Auth";
 
 import { removePost } from "../../../../actions";
+import {calcGeoDistance} from '../../../../utils'
+
 
 const Post = ({ post, removePost, postID }) => {
   const { currentUser } = useContext(AuthContext);
+  const [ distance, setDistance ] = useState(null);
+
+  calcGeoDistance(post, d => setDistance(d));
 
   return (
     <div className="post">
@@ -34,6 +39,7 @@ const Post = ({ post, removePost, postID }) => {
                 {post.timestamp}
               </Moment>
             </span>
+            {distance && <span className="post__distance">מרחק מכאן - {distance}ק"מ</span>}
           </div>
           {currentUser && post.user_ID === currentUser.uid ? (
             <label className="text-button" htmlFor={`post-checkbox` + postID}>
