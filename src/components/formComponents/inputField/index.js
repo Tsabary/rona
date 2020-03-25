@@ -1,7 +1,7 @@
 import "./styles.scss";
 import React from "react";
 
-const InputField = ({ placeHolder, onChange, value, label, type, isNumber }) => {
+const InputField = ({ placeHolder, onChange, value, label, type, isNumber, required=false, pattern=false}) => {
 
   const handleChange = string => {
     isNumber ? onChange(Number(string.replace(/\D/, ""))) : onChange(string);
@@ -18,7 +18,9 @@ const InputField = ({ placeHolder, onChange, value, label, type, isNumber }) => 
         autoComplete="new-password"
         value={value || ""}
         onChange={e => handleChange(e.target.value)}
-      ></input>
+        required={required}
+        pattern={pattern}
+      />
       <label htmlFor={placeHolder} className="input-field__label">
         {label}
       </label>

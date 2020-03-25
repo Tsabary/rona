@@ -1,7 +1,7 @@
 import "./styles.scss";
 import React from "react";
 
-const TextArea = ({ placeHolder, onChange, value, label, rows }) => {
+const TextArea = ({ placeHolder, onChange, value, label, rows, required=false}) => {
   return (
     <div className="text-area">
       <textarea
@@ -13,6 +13,7 @@ const TextArea = ({ placeHolder, onChange, value, label, rows }) => {
         value={value || ""}
         onChange={e => onChange(e.target.value)}
         rows={rows}
+        required={required}
       />
       <label htmlFor={placeHolder} className="text-area__label">
         {label}
