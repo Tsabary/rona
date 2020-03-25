@@ -58,24 +58,55 @@ exports.newPost = functions.firestore
   .onCreate((snap, context) => {
     const post = snap.data();
     return post
-      ? index
-          .saveObject({
-            user_name: post.user_name,
-            user_gender: post.user_gender,
-            user_avatar: post.user_avatar,
-            user_ID: post.user_ID,
-            title: post.title,
-            phone_number: post.phone_number,
-            objectID : post.id,
-            body: post.body,
-            address_text: post.address_text,
-            _geoloc: {
-              lat: post.address_coords.latitude,
-              lng: post.address_coords.longitude
-            }
-          })
-          .then(res => console.log(res))
-      : "Why this shit ain't happening";
+      ? index.saveObject({
+          objectID: post.id,
+          timestamp: post.timestamp,
+          user_name: post.user_name,
+          user_gender: post.user_gender,
+          user_avatar: post.user_avatar,
+          user_ID: post.user_ID,
+          title: post.title,
+          body: post.body,
+          phone_number: post.phone_number,
+          address_text: post.address_text,
+          _geoloc: {
+            lat: post.address_coords.latitude,
+            lng: post.address_coords.longitude
+          }
+        })
+      : null;
+  });
+
+exports.postDelete = functions.firestore
+  .document("posts/{postID}")
+  .onDelete((snap, context) => {
+    const post = snap.data();
+    if (post) index.deleteObject(post.id);
+  });
+
+exports.postUpdated = functions.firestore
+  .document("posts/{postID}")
+  .onUpdate((change, context) => {
+    const post = change.after.data();
+
+    return post
+      ? index.saveObject({
+          objectID: post.id,
+          timestamp: post.timestamp,
+          user_name: post.user_name,
+          user_gender: post.user_gender,
+          user_avatar: post.user_avatar,
+          user_ID: post.user_ID,
+          title: post.title,
+          body: post.body,
+          phone_number: post.phone_number,
+          address_text: post.address_text,
+          _geoloc: {
+            lat: post.address_coords.latitude,
+            lng: post.address_coords.longitude
+          }
+        })
+      : null;
   });
 
 exports.writeFileToDatabase = functions.storage.object().onFinalize(object => {
