@@ -64,99 +64,107 @@ const NewRequest = ({ newRequest }) => {
             <div />
           Close
         </a>
-          <div className="popup__title">Make a Request</div>
-          <form
-            onSubmit={() =>
-              newRequest(values, () => {
-                addToast('בקשה נשלחה', {
-                  appearance: 'success',
-                  autoDismiss: true,
-                })
-                setValues({ ...values, title: "", body: "" })
-              })
+        <div className="popup__title">Make a Request</div>
+        <form
+          onSubmit={e => {
+            if (!e.target.checkValidity()) {
+              return;
             }
-          >
-            I need help with:
+            addToast('בקשה נשלחה', {
+              appearance: 'success',
+              autoDismiss: true,
+            })
+            newRequest(values, () =>
+              setValues({ ...values, title: "", body: "" })
+            )
+          }}
+        >
+          I need help with:
           <InputField
-              type="text"
-              placeHolder="Title"
-              value={values.title}
-              onChange={title => setValues({ ...values, title })}
-              label="Title"
-            />
+            type="text"
+            placeHolder="Title"
+            value={values.title}
+            onChange={title => setValues({ ...values, title })}
+            label="Title"
+            required="true"
+          />
 
-            <TextArea
-              type="text"
-              placeHolder="Can you add some more details that will help others wanting to assist?"
-              value={values.body}
-              onChange={body => setValues({ ...values, body })}
-              label="Extra details"
-            />
+          <TextArea
+            type="text"
+            placeHolder="Can you add some more details that will help others wanting to assist?"
+            value={values.body}
+            onChange={body => setValues({ ...values, body })}
+            label="Extra details"
+            required="true"
+          />
 
-            <InputField
-              type="text"
-              placeHolder="First name"
-              value={values.user_name}
-              onChange={user_name => setValues({ ...values, user_name })}
-              label="First name"
-            />
+          <InputField
+            type="text"
+            placeHolder="First name"
+            value={values.user_name}
+            onChange={user_name => setValues({ ...values, user_name })}
+            label="First name"
+            required="true"
+          />
 
-            <div className="small-margin-bottom">
-              <PlacesAutocomplete
-                value={address || ""}
-                onChange={address => setAddress(address)}
-                onSelect={handleSelect}
-              >
-                {({
-                  getInputProps,
-                  suggestions,
-                  getSuggestionItemProps,
-                  loading
-                }) => (
-                    <div>
-                      <input
-                        {...getInputProps({
-                          placeholder: "What's your address?",
-                          className: "input-field__input"
-                        })}
-                      />
-                      <div className="places-autocomplete-dropdown-container">
-                        {loading && <div>Loading...</div>}
-                        {suggestions.map(suggestion => {
-                          // inline style for demonstration purpose
-                          const style = suggestion.active
-                            ? { backgroundColor: "#ebecf4", cursor: "pointer" }
-                            : { backgroundColor: "#ffffff", cursor: "pointer" };
-                          return (
-                            <div
-                              {...getSuggestionItemProps(suggestion, {
-                                className: "places-autocomplete",
-                                style
-                              })}
-                            >
-                              <span>{suggestion.description}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-              </PlacesAutocomplete>
-            </div>
+          <div className="small-margin-bottom">
+            <PlacesAutocomplete
+              value={address || ""}
+              onChange={address => setAddress(address)}
+              onSelect={handleSelect}
+            >
+              {({
+                getInputProps,
+                suggestions,
+                getSuggestionItemProps,
+                loading
+              }) => (
+                <div>
+                  <input required
+                    {...getInputProps({
+                      placeholder: "What's your address?",
+                      className: "input-field__input"
+                    })}
+                  />
+                  <div className="places-autocomplete-dropdown-container">
+                    {loading && <div>Loading...</div>}
+                    {suggestions.map(suggestion => {
+                      // inline style for demonstration purpose
+                      const style = suggestion.active
+                        ? { backgroundColor: "#ebecf4", cursor: "pointer" }
+                        : { backgroundColor: "#ffffff", cursor: "pointer" };
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className: "places-autocomplete",
+                            style
+                          })}
+                        >
+                          <span>{suggestion.description}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </PlacesAutocomplete>
+          </div>
 
-            <InputField
-              type="text"
-              placeHolder="Phone Number"
-              value={values.phone_number}
-              onChange={phone_number => setValues({ ...values, phone_number })}
-              label="Phone Number"
-            />
+          <InputField
+            type="text"
+            placeHolder="Phone Number"
+            value={values.phone_number}
+            onChange={phone_number => setValues({ ...values, phone_number })}
+            label="Phone Number"
+            required="true"
+            pattern={'[0-9]{10}'}
+          />
 
 
 
-            <div className="popup__button medium-margin-top">
-              <button type="submit" className="boxed-button">
-                שליחה
+          <div className="popup__button medium-margin-top">
+            <button type="submit" className="boxed-button">
+              שליחה
             </button>
             </div>
           </form>
