@@ -1,5 +1,5 @@
 import "./styles.scss";
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import Moment from "react-moment";
 import "moment/locale/he";
 
@@ -8,12 +8,11 @@ import { connect } from "react-redux";
 import { AuthContext } from "../../../../providers/Auth";
 
 import { removePost } from "../../../../actions";
-import {calcGeoDistance} from '../../../../utils'
-
+import { calcGeoDistance } from "../../../../utils";
 
 const Post = ({ post, removePost, postID }) => {
   const { currentUser } = useContext(AuthContext);
-  const [ distance, setDistance ] = useState(null);
+  const [distance, setDistance] = useState(null);
 
   calcGeoDistance(post, d => setDistance(d));
 
@@ -39,74 +38,25 @@ const Post = ({ post, removePost, postID }) => {
                 {post.timestamp}
               </Moment>
             </span>
-            {distance && <span className="post__distance">מרחק מכאן - {distance}ק"מ</span>}
           </div>
           {currentUser && post.user_ID === currentUser.uid ? (
             <label className="text-button" htmlFor={`post-checkbox` + postID}>
               מחיקה
             </label>
-          ) : null}
-        </div>
-
-        {/* <details>
-          <summary>
-            <div className="post__title">{post.title}</div>
-          </summary>
-          <div className="post__body tiny-margin-top">{post.body}</div>
-
-          <div className="post__details tiny-margin-top"></div>
-          {!currentUser ? (
-            <a href="#sign-up">Show Details</a>
-          ) : isDetailsVisible ? (
-            <div>
-              <a
-                className="post__location"
-                target="_blank"
-                href={
-                  "http://www.google.com/maps/place/" +
-                  post.address_coords.latitude +
-                  "," +
-                  post.address_coords.longitude
-                }
-              >
-                Location: {post.address_text}
-              </a>
-              <div className="post__number-visible">{post.phone_number}</div>
-            </div>
-          ) : (
-            <div className="post_show-details" onClick={setIsDetailsVisible}>
-              Show Details
+          ) : distance && (
+            <div className="post__distance">
+              {distance.split(".")[0] + "." + distance.split(".")[1].charAt(0)}{" "}
+              ק"מ ממיקומך הנוכחי
             </div>
           )}
-        </details> */}
-
-        <div className="post__title">{post.title}</div>
-        <div className="post__body tiny-margin-top">{post.body}</div>
-        <div className="post__details tiny-margin-top">
-          {/* <a
-            className="post__location"
-            target="_blank"
-            href={
-              "http://www.google.com/maps/place/" +
-              post.address_coords.latitude +
-              "," +
-              post.address_coords.longitude
-            }
-          >
-            Location: {post.address_text}
-          </a> */}
-
-          {/* {isNumberVisible ? (
-            <div className="post__number-visible">{post.phone_number}</div>
-          ) : (
-            <div
-              className="post__number-hidden text-button clickable"
-              onClick={() => setIsNumberVisible(true)}
-            >
-              Show number
-            </div>
-          )} */}
         </div>
+
+        <div className="post__content">
+          <div className="post__title">{post.title}</div>
+          <div className="post__body tiny-margin-top">{post.body}</div>
+        </div>
+
+        
       </span>
 
       <span className="post__hidden">

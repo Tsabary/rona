@@ -10,7 +10,9 @@
   bottom: 5rem;
   right: 5rem;
   z-index: 2000;
-  background-color: $mainColor;
+  background: $gradientColor;
+
+  // background-color: $mainColor;
   padding: 1.5rem 2.5rem;
   color: white;
   border-radius: $borderRadius;

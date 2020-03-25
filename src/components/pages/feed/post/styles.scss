@@ -27,13 +27,19 @@
     }
   }
   &__distance {
-    margin-right: 30px;
+    color: $greyLight;
   }
   &__timestamp {
     color: $grey;
   }
   &__author-name {
     color: $grey;
+  }
+  &__content{
+    // background-color: $greyLightest;
+    border-radius: $borderRadius;
+    padding: 3rem;
+    // border: $mainColor 1px solid;
   }
 
   &__remove {
@@ -48,7 +54,7 @@
     @include gridVariation;
     grid-template-columns: repeat(2, max-content);
     @include resize(700px) {
-      grid-template-columns:  1fr;
+      grid-template-columns: 1fr;
     }
   }
 
