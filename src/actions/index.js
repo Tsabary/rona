@@ -78,15 +78,20 @@ export const newRequest = (values, reset) => dispatch => {
   const newDoc = db.collection("posts").doc();
   const post = { ...values, id: newDoc.id, timestamp: Date.now() };
 
-  newDoc.set(post).then(() => {
-    reset();
-    window.location.hash = "";
+  newDoc.set(post)
+    .then(() => {
+      reset();
+      window.location.hash = "";
 
-    dispatch({
-      type: FETCH_SINGLE,
-      payload: post
+      dispatch({
+        type: FETCH_SINGLE,
+        payload: post
+      });
+    })
+    .catch(error => {
+      console.log(`Error: while adding document:${error}`);
+      throw new Error(`Error: while adding document:${error}`); // throw an Error
     });
-  });
 };
 
 export const fetchSingleItem = (id, setEvent) => async dispatch => {
