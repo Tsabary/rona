@@ -19,10 +19,11 @@ import TextArea from "../../formComponents/textArea";
 import IconOption from "../../formComponents/iconOption";
 
 const NewRequest = ({ newRequest }) => {
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({title:'אני צריך עזרה ב'});
   const { currentUserProfile, currentUser } = useContext(AuthContext);
   const [address, setAddress] = useState(null);
   const { addToast } = useToasts();
+
   useEffect(() => {
     if (!!currentUserProfile) {
       setValues({
@@ -31,7 +32,8 @@ const NewRequest = ({ newRequest }) => {
         user_avatar: currentUserProfile.avatar,
         address_text: currentUserProfile.address_text,
         address_coords: currentUserProfile.address_coords,
-        phone_number: currentUserProfile.phone_number
+        phone_number: currentUserProfile.phone_number,
+        title: 'אני צריך עזרה ב'
       });
       if (currentUserProfile.address_text)
         setAddress(currentUserProfile.address_text);
@@ -70,13 +72,14 @@ const NewRequest = ({ newRequest }) => {
             if (!e.target.checkValidity()) {
               return;
             }
-            addToast('בקשה נשלחה', {
-              appearance: 'success',
-              autoDismiss: true,
+
+            newRequest(values, () => {
+              addToast('בקשה נשלחה', {
+                appearance: 'success',
+                autoDismiss: true,
+              })
+              setValues({ ...values, title: "אני צריך עזרה ב", body: "" })
             })
-            newRequest(values, () =>
-              setValues({ ...values, title: "", body: "" })
-            )
           }}
         >
           I need help with:
@@ -86,7 +89,7 @@ const NewRequest = ({ newRequest }) => {
             value={values.title}
             onChange={title => setValues({ ...values, title })}
             label="Title"
-            required="true"
+            required={true}
           />
 
           <TextArea
@@ -95,7 +98,7 @@ const NewRequest = ({ newRequest }) => {
             value={values.body}
             onChange={body => setValues({ ...values, body })}
             label="Extra details"
-            required="true"
+            required={true}
           />
 
           <InputField
@@ -104,7 +107,7 @@ const NewRequest = ({ newRequest }) => {
             value={values.user_name}
             onChange={user_name => setValues({ ...values, user_name })}
             label="First name"
-            required="true"
+            required={true}
           />
 
           <div className="small-margin-bottom">
@@ -156,7 +159,7 @@ const NewRequest = ({ newRequest }) => {
             value={values.phone_number}
             onChange={phone_number => setValues({ ...values, phone_number })}
             label="Phone Number"
-            required="true"
+            required={true}
             pattern={'[0-9]{10}'}
           />
 
