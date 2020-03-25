@@ -57,8 +57,10 @@ export const providerSignIn = provider => () => {
   switch (provider) {
     case "google":
       firebase.auth().signInWithPopup(googleProvider);
+      break;
     case "facebook":
       firebase.auth().signInWithPopup(facebookProvider);
+      break;
   }
 };
 
@@ -78,7 +80,8 @@ export const newRequest = (values, reset) => dispatch => {
   const newDoc = db.collection("posts").doc();
   const post = { ...values, id: newDoc.id, timestamp: Date.now() };
 
-  newDoc.set(post)
+  newDoc
+    .set(post)
     .then(() => {
       reset();
       window.location.hash = "";
