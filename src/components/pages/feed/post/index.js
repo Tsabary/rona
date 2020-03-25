@@ -9,7 +9,7 @@ import { AuthContext } from "../../../../providers/Auth";
 
 import { removePost } from "../../../../actions";
 
-const Post = ({ post, removePost }) => {
+const Post = ({ post, removePost, postID }) => {
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -17,7 +17,7 @@ const Post = ({ post, removePost }) => {
       <input
         className="post-checkbox"
         type="checkbox"
-        id={`post-checkbox` + post.id}
+        id={`post-checkbox` + postID}
       />
       <span className="post__visible">
         <div className="max-fr-max tiny-margin-bottom">
@@ -36,7 +36,7 @@ const Post = ({ post, removePost }) => {
             </span>
           </div>
           {currentUser && post.user_ID === currentUser.uid ? (
-            <label className="text-button" htmlFor={`post-checkbox` + post.id}>
+            <label className="text-button" htmlFor={`post-checkbox` + postID}>
               מחיקה
             </label>
           ) : null}
@@ -106,13 +106,13 @@ const Post = ({ post, removePost }) => {
       <span className="post__hidden">
         <div>בטוח שברצונך למחוק את הפוסט?</div>
         <div className="max-max small-margin-top">
-          <label className="text-button" htmlFor={`post-checkbox` + post.id}>
+          <label className="text-button" htmlFor={`post-checkbox` + postID}>
             ביטול
           </label>
 
           <label
             className="post__remove"
-            htmlFor={`post-checkbox` + post.id}
+            htmlFor={`post-checkbox` + postID}
             onClick={() => removePost(post)}
           >
             מחיקה

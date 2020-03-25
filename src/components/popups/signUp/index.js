@@ -25,43 +25,8 @@ const SignUp = ({ signUp, providerSignIn }) => {
       case 0:
         return (
           <>
-            <div className="popup__title">Sign Up / Log In</div>
+            <div className="popup__title">הרשמה \ התחברות</div>
             <form onSubmit={handleSubmit}>
-              <div className="small-margin-top">
-                <InputField
-                  type="text"
-                  placeHolder="Full name"
-                  value={values.name}
-                  onChange={name => setValues({ ...values, name })}
-                  label="Full name"
-                />
-                <InputField
-                  type="email"
-                  placeHolder="Email address"
-                  value={values.email}
-                  onChange={email => setValues({ ...values, email })}
-                  label="Email"
-                />
-                <InputField
-                  type="password"
-                  placeHolder="Password"
-                  value={values.password}
-                  onChange={password => setValues({ ...values, password })}
-                  label="Password"
-                />
-              </div>
-
-              {error ? (
-              <div className="form-error small-margin-top">{formError}</div>
-            ) : null}
-
-              <button
-                type="submit"
-                className="auth__button auth__button--direct small-margin-top"
-              >
-                Submit
-              </button>
-
               <div
                 className="auth__button auth__button--google  small-margin-top"
                 onClick={() => {
@@ -93,18 +58,18 @@ const SignUp = ({ signUp, providerSignIn }) => {
       case 2:
         return (
           <div>
-            Please check your email for our message and verify your account.
+            בבקשה בדקו את האימייל שלכם להודעה אישור.
           </div>
         );
 
       case 3:
-        return <div>Welcome back!</div>;
+        return <div>ברועים השבים!</div>;
 
       case 4:
-        return <div>Oh no! We're experincing issues signing you up.</div>;
+        return <div>אופס, יש לנו כמה בעיות בהרשמה כרגע.</div>;
 
       case 5:
-        return <div>Oh no! We're experincing issues loging you in.</div>;
+        return <div>אופס, יש לנו כמה בעיות בחיבור כרגע.</div>;
     }
   };
 
@@ -113,7 +78,7 @@ const SignUp = ({ signUp, providerSignIn }) => {
       <div className="popup__container">
         <a className="popup__close" href="#">
           <div />
-          Close
+          סגירה
         </a>
         {renderContent(submitting, formError)}
       </div>

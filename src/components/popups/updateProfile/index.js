@@ -63,9 +63,9 @@ const UpdateProfile = ({ updateProfile }) => {
       <div className="popup__container">
         <a className="popup__close" href="#">
           <div />
-          Close
+          סגירה
         </a>
-        <div className="popup__title">Update your profile</div>
+        <div className="popup__title">עדכון פרופיל</div>
         <form
           onSubmit={() =>
             updateProfile(values, currentUser, imageObj, () =>
@@ -100,7 +100,7 @@ const UpdateProfile = ({ updateProfile }) => {
             placeHolder="First name"
             value={values.name}
             onChange={name => setValues({ ...values, name })}
-            label="First name"
+            label="שם פרטי"
           />
 
           <div className="small-margin-bottom">
@@ -155,12 +155,12 @@ const UpdateProfile = ({ updateProfile }) => {
             placeHolder="Phone Number"
             value={values.phone_number}
             onChange={phone_number => setValues({ ...values, phone_number })}
-            label="Phone Number"
+            label="טלפון"
           />
 
           <div className="popup__button medium-margin-top">
             <button type="submit" className="boxed-button">
-              Update
+              עדכון
             </button>
           </div>
         </form>

@@ -35,9 +35,9 @@ const Feed = ({ fetchAllPosts }) => {
     fetchAllPosts();
   }, []);
 
-  const renderItems = (posts) => {
+  const renderItems = posts => {
     return posts.map(post => {
-      return <Post post={post} />;
+      return <Post post={post} postID={post.objectID} key={post.objectID} />;
     });
   };
 
@@ -49,7 +49,7 @@ const Feed = ({ fetchAllPosts }) => {
           currentUser && currentUser.emailVerified ? "#new-request" : "#sign-up"
         }
       >
-        ...צריך עזרה עם
+        בקשת עזרה
       </a>
 
       {/* <InstantSearch indexName="posts" searchClient={searchClient} /> */}

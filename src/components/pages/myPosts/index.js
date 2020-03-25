@@ -1,5 +1,5 @@
 import "./styles.scss";
-import React, { useEffect,  useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import { AuthContext } from "../../../providers/Auth";
 
@@ -7,15 +7,16 @@ import { fetchMyPosts } from "../../../actions";
 import Post from "../feed/post";
 
 const MyPosts = ({ myPosts, fetchMyPosts }) => {
-  const {  currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-   if(currentUser) fetchMyPosts(currentUser.uid);
+    if (currentUser) fetchMyPosts(currentUser.uid);
   }, [currentUser]);
 
   const renderItems = () => {
     return myPosts.map(post => {
-      return <Post post={post} />;
+      console.log(post);
+      return <Post post={post} postID={post.id} key={post.id} />;
     });
   };
 

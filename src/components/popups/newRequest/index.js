@@ -86,7 +86,9 @@ const NewRequest = ({ newRequest }) => {
             type="text"
             placeHolder="Title"
             value={values.title}
-            onChange={title => setValues({ ...values, title })}
+            onChange={title => {
+              if (title.length < 90) setValues({ ...values, title });
+            }}
             label="Title"
             required={true}
           />
@@ -94,7 +96,9 @@ const NewRequest = ({ newRequest }) => {
             type="text"
             placeHolder="Can you add some more details that will help others wanting to assist?"
             value={values.body}
-            onChange={body => setValues({ ...values, body })}
+            onChange={body => {
+              if (body.length < 300) setValues({ ...values, body });
+            }}
             label="Extra details"
             required={true}
           />
