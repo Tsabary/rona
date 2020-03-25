@@ -146,22 +146,11 @@ const NewRequest = ({ newRequest }) => {
             label="Phone Number"
           />
 
-          <div className="fr-fr">
-            <IconOption
-              id="male"
-              onClick={() => setValues({ ...values, gender: "male" })}
-              icon="male.png"
-            />
-            <IconOption
-              id="female"
-              onClick={() => setValues({ ...values, gender: "female" })}
-              icon="female.png"
-            />
-          </div>
+
 
           <div className="popup__button medium-margin-top">
             <button type="submit" className="boxed-button">
-              Post
+              שליחה
             </button>
           </div>
         </form>
