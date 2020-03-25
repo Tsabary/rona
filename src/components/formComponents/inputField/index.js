@@ -1,13 +1,11 @@
 import "./styles.scss";
 import React from "react";
 
-const InputField = ({ placeHolder, onChange, value, label, type, isNumber, required=false, pattern=false}) => {
-
+const InputField = ({ placeHolder, onChange, value, label, type, isNumber, required=false, pattern=null}) => {
   const handleChange = string => {
     isNumber ? onChange(Number(string.replace(/\D/, ""))) : onChange(string);
   };
-
-
+  
   return (
     <div className="input-field">
       <input
