@@ -4,8 +4,26 @@
   color: $mainColorBlack;
 }
 
+@mixin resize($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
 @mixin padding {
   padding: 15rem 10rem;
+
+  @include resize(700px) {
+    padding: 12rem 8rem;
+  }
+
+  @include resize(600px) {
+    padding: 12rem 6rem;
+  }
+
+  @include resize(500px) {
+    padding: 12rem 4rem;
+  }
 }
 
 @mixin image {
@@ -25,22 +43,19 @@
   align-items: center;
 }
 
-@mixin resize($size) {
-  @media only screen and (max-width: $size) {
-    @content;
-  }
-}
-
-
 @mixin basicContainer {
   padding: 5rem 8rem;
   border-radius: $borderRadius;
   box-shadow: 0 0.2rem 9rem rgb(228, 228, 228);
   background-color: white;
 
-  @include resize(1100px){
+  @include resize(1100px) {
     padding: 3rem 5rem;
+  }
 
+  
+  @include resize(500px) {
+    padding: 0rem 3rem;
   }
 }
 
@@ -49,7 +64,6 @@
   gap: 2rem;
   align-items: center;
 }
-
 
 @mixin toggleConainer {
   & > * {

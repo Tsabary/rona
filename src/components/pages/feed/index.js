@@ -52,7 +52,6 @@ const Feed = ({ fetchAllPosts }) => {
         בקשת עזרה
       </a>
 
-      {/* <InstantSearch indexName="posts" searchClient={searchClient} /> */}
 
       {!!posts.length ? (
         renderItems(posts)
