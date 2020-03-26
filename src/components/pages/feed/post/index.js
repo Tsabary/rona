@@ -45,7 +45,7 @@ const Post = ({ post, removePost, postID }) => {
             </label>
           ) : distance && (
             <div className="post__distance">
-              {distance.split(".")[0] + "." + distance.split(".")[1].charAt(0)}{" "}
+              <span>{distance}</span>
               ק"מ ממיקומך הנוכחי
             </div>
           )}
