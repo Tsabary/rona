@@ -6,7 +6,8 @@ import {
   DELETE_POST,
   SET_PAGE,
   FETCH_MY_POSTS,
-  DELETE_MY_POST
+  DELETE_MY_POST,
+  TOGGLE_POPUP
 } from "./types";
 
 const db = firebase.firestore();
@@ -154,5 +155,12 @@ export const setCurrentPage = value => {
   return {
     type: SET_PAGE,
     payload: value
+  };
+};
+
+
+export const togglePopup = () => {
+  return {
+    type: TOGGLE_POPUP
   };
 };

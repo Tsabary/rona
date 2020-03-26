@@ -6,7 +6,7 @@ import algoliasearch from "algoliasearch/lite";
 import { InstantSearch } from "react-instantsearch-dom";
 
 import { AuthContext } from "../../../providers/Auth";
-import { fetchAllPosts } from "../../../actions";
+import { fetchAllPosts, togglePopup } from "../../../actions";
 import Post from "./post";
 
 const searchClient = algoliasearch(
@@ -15,7 +15,7 @@ const searchClient = algoliasearch(
 );
 const index = searchClient.initIndex("posts");
 
-const Feed = ({ fetchAllPosts }) => {
+const Feed = ({ fetchAllPosts, togglePopup, popupShown }) => {
   const { currentUser } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [coords, setCoords] = useState([31.832768, 34.826944]);
@@ -44,6 +44,8 @@ const Feed = ({ fetchAllPosts }) => {
   return (
     <div className="feed">
       <a
+        style={{display: popupShown ? 'none' : ''}}
+        onClick={togglePopup}
         className="post-button"
         href={
           currentUser && currentUser.emailVerified ? "#new-request" : "#sign-up"
@@ -67,7 +69,8 @@ const Feed = ({ fetchAllPosts }) => {
 const mapStateToProps = state => {
   return {
     // posts: state.posts
+    popupShown: state.popupShown
   };
 };
 
-export default connect(mapStateToProps, { fetchAllPosts })(Feed);
+export default connect(mapStateToProps, { fetchAllPosts, togglePopup })(Feed);

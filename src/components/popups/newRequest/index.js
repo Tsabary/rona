@@ -12,12 +12,12 @@ import PlacesAutocomplete, {
 
 import { AuthContext } from "../../../providers/Auth";
 
-import { newRequest } from "../../../actions";
+import { newRequest, togglePopup } from "../../../actions";
 
 import InputField from "../../formComponents/inputField";
 import TextArea from "../../formComponents/textArea";
 
-const NewRequest = ({ newRequest }) => {
+const NewRequest = ({ newRequest, togglePopup }) => {
   const [values, setValues] = useState({ title: "אני צריך עזרה ב" });
 
   const { currentUserProfile, currentUser } = useContext(AuthContext);
@@ -61,7 +61,7 @@ const NewRequest = ({ newRequest }) => {
   return (
     <div className="popup" id="new-request">
       <div className="popup__container">
-        <a className="popup__close" href="#">
+        <a className="popup__close" href="#" onClick={togglePopup}>
           <div />
           Close
         </a>
@@ -77,6 +77,7 @@ const NewRequest = ({ newRequest }) => {
                 appearance: "success",
                 autoDismiss: true
               });
+              togglePopup()
               setValues({ ...values, title: "אני צריך עזרה ב", body: "" });
             });
           }}
@@ -173,4 +174,4 @@ const NewRequest = ({ newRequest }) => {
   );
 };
 
-export default connect(null, { newRequest })(NewRequest);
+export default connect(null, { newRequest, togglePopup })(NewRequest);
