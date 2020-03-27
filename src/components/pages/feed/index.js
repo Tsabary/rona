@@ -26,18 +26,27 @@ const Feed = ({
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    if (currentUserProfile && currentUserProfile.address_coords)
-      changeAddress({
-        text: currentUserProfile.address_text,
-        coords: [
-          currentUserProfile.address_coords.latitude,
-          currentUserProfile.address_coords.longitude
-        ]
-      });
+    navigator.geolocation.getCurrentPosition(
+      success => {
+        changeAddress({
+          text: "Your current location",
+          coords: [success.coords.latitude, success.coords.longitude]
+        });
+      },
+      fail => {
+        if (currentUserProfile && currentUserProfile.address_coords)
+        changeAddress({
+          text: currentUserProfile.address_text,
+          coords: [
+            currentUserProfile.address_coords.latitude,
+            currentUserProfile.address_coords.longitude
+          ]
+        });      }
+    );
   }, [currentUserProfile]);
 
+
   useEffect(() => {
-    console.log(address);
     index
       .search("", {
         aroundLatLng: `${address.coords[0]}, ${address.coords[1]}`,
