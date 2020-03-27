@@ -7,7 +7,8 @@ import {
   SET_PAGE,
   FETCH_MY_POSTS,
   DELETE_MY_POST,
-  TOGGLE_POPUP
+  TOGGLE_POPUP,
+  CHANGE_ADDRESS
 } from "./types";
 
 const db = firebase.firestore();
@@ -164,3 +165,12 @@ export const togglePopup = () => {
     type: TOGGLE_POPUP
   };
 };
+
+
+export const changeAddress = address => {
+  return {
+    type: CHANGE_ADDRESS,
+    payload : address
+  };
+};
+

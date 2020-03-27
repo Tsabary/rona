@@ -6,9 +6,9 @@
   top: 0;
   width: 100vw;
   display: grid;
-  grid-template-columns: 1fr max-content 1fr;
+  grid-template-columns: max-content 1fr max-content;
   align-items: start;
-  grid-gap: 8rem;
+  gap: 14rem;
   margin-bottom: 5rem;
   padding: 5rem 10rem;
 
@@ -34,7 +34,7 @@
     color: $mainColorBlack;
     position: absolute;
     right: 10rem;
-    top: 5rem;
+    top: 6rem;
     transition: all .2s;
     &:hover {
       color: $mainColor;
@@ -46,5 +46,7 @@
     height: 4rem;
     display: grid;
     justify-content: flex-end;
+    margin-top: .5rem;
+
   }
 }

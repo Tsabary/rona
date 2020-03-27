@@ -35,11 +35,9 @@ const Header = ({ setCurrentPage }) => {
 
   return (
     <div className="header">
-      <div className="header__logo-container">
         <div className="header__logo-container" onClick={handleChange}>
           <div className="header__title">Rona</div>
         </div>
-      </div>
       <AddressOptions/> 
       <div className="header__auth">{renderAuth()}</div>
     </div>

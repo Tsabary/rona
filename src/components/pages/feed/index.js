@@ -6,7 +6,7 @@ import algoliasearch from "algoliasearch/lite";
 import { InstantSearch } from "react-instantsearch-dom";
 
 import { AuthContext } from "../../../providers/Auth";
-import { fetchAllPosts, togglePopup } from "../../../actions";
+import { fetchAllPosts, togglePopup, changeAddress } from "../../../actions";
 import Post from "./post";
 
 const searchClient = algoliasearch(
@@ -15,27 +15,45 @@ const searchClient = algoliasearch(
 );
 const index = searchClient.initIndex("posts");
 
-const Feed = ({ fetchAllPosts, togglePopup, popupShown }) => {
-  const { currentUser } = useContext(AuthContext);
+const Feed = ({
+  fetchAllPosts,
+  togglePopup,
+  popupShown,
+  address,
+  changeAddress
+}) => {
+  const { currentUser, currentUserProfile } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
-  const [coords, setCoords] = useState([31.832768, 34.826944]);
 
   useEffect(() => {
+    if (currentUserProfile)
+      changeAddress({
+        text: currentUserProfile.address_text,
+        coords: [
+          currentUserProfile.address_coords.latitude,
+          currentUserProfile.address_coords.longitude
+        ]
+      });
+  }, [currentUserProfile]);
+
+  useEffect(() => {
+    console.log(address)
     index
       .search("", {
-        aroundLatLng: `${coords[0]}, ${coords[1]}`,
+        aroundLatLng: `${address.coords[0]}, ${address.coords[1]}`,
         aroundRadius: "all"
       })
       .then(({ hits }) => {
         setPosts(hits);
       });
-  }, [coords]);
+  }, [address]);
 
   useEffect(() => {
     fetchAllPosts();
   }, []);
 
   const renderItems = posts => {
+    console.log("re renderrr")
     return posts.map(post => {
       return <Post post={post} postID={post.objectID} key={post.objectID} />;
     });
@@ -44,7 +62,7 @@ const Feed = ({ fetchAllPosts, togglePopup, popupShown }) => {
   return (
     <div className="feed">
       <a
-        style={{display: popupShown ? 'none' : ''}}
+        style={{ display: popupShown ? "none" : "" }}
         onClick={togglePopup}
         className="post-button"
         href={
@@ -53,7 +71,6 @@ const Feed = ({ fetchAllPosts, togglePopup, popupShown }) => {
       >
         בקשת עזרה
       </a>
-
 
       {!!posts.length ? (
         renderItems(posts)
@@ -68,9 +85,13 @@ const Feed = ({ fetchAllPosts, togglePopup, popupShown }) => {
 
 const mapStateToProps = state => {
   return {
-    // posts: state.posts
+    address: state.address,
     popupShown: state.popupShown
   };
 };
 
-export default connect(mapStateToProps, { fetchAllPosts, togglePopup })(Feed);
+export default connect(mapStateToProps, {
+  fetchAllPosts,
+  togglePopup,
+  changeAddress
+})(Feed);
