@@ -20,7 +20,7 @@ import TextArea from "../../formComponents/textArea";
 const NewRequest = ({ newRequest, togglePopup }) => {
   const [values, setValues] = useState({ title: "אני צריך עזרה ב" });
 
-  const { currentUserProfile, currentUser } = useContext(AuthContext);
+  const { currentUserProfile } = useContext(AuthContext);
   const [address, setAddress] = useState(null);
   const { addToast } = useToasts();
 
@@ -63,9 +63,9 @@ const NewRequest = ({ newRequest, togglePopup }) => {
       <div className="popup__container">
         <a className="popup__close" href="#" onClick={togglePopup}>
           <div />
-          Close
+          סגירה
         </a>
-        <div className="popup__title">Make a Request</div>
+        <div className="popup__title">בקשה חדשה</div>
         <form
           onSubmit={e => {
             if (!e.target.checkValidity()) {
@@ -78,37 +78,36 @@ const NewRequest = ({ newRequest, togglePopup }) => {
                 autoDismiss: true
               });
               togglePopup()
-              setValues({ ...values, title: "אני צריך עזרה ב", body: "" });
+              setValues({ ...values, title: "אני צריך עזרה עם", body: "" });
             });
           }}
         >
-          I need help with:
           <InputField
             type="text"
-            placeHolder="Title"
+            placeHolder="כותרת"
             value={values.title}
             onChange={title => {
-              if (title.length < 90) setValues({ ...values, title });
+              if (title.length < 50) setValues({ ...values, title });
             }}
-            label="Title"
+            label="כותרת"
             required={true}
           />
           <TextArea
             type="text"
-            placeHolder="Can you add some more details that will help others wanting to assist?"
+            placeHolder="פרטים נוספים שיעזרו למסייעים להבין איך ניתן לעזור"
             value={values.body}
             onChange={body => {
               if (body.length < 300) setValues({ ...values, body });
             }}
-            label="Extra details"
+            label="פרטים נוספים"
             required={true}
           />
           <InputField
             type="text"
-            placeHolder="First name"
+            placeHolder="שם"
             value={values.user_name}
             onChange={user_name => setValues({ ...values, user_name })}
-            label="First name"
+            label="שם"
             required={true}
           />
           <div className="small-margin-bottom">
@@ -127,7 +126,7 @@ const NewRequest = ({ newRequest, togglePopup }) => {
                   <input
                     required
                     {...getInputProps({
-                      placeholder: "What's your address?",
+                      placeholder: "כתובת",
                       className: "input-field__input"
                     })}
                   />
@@ -156,10 +155,10 @@ const NewRequest = ({ newRequest, togglePopup }) => {
           </div>
           <InputField
             type="text"
-            placeHolder="Phone Number"
+            placeHolder="טלפון"
             value={values.phone_number}
             onChange={phone_number => setValues({ ...values, phone_number })}
-            label="Phone Number"
+            label="טלפון"
             required={true}
             pattern={"[0-9]{10}"}
           />
