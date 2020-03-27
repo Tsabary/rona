@@ -13,6 +13,7 @@ import { calcGeoDistance } from "../../../../utils";
 const Post = ({ post, removePost, postID }) => {
   const { currentUser } = useContext(AuthContext);
   const [distance, setDistance] = useState(null);
+  const [isNumberVisible, setIsNumberVisible] = useState(false);
 
   calcGeoDistance(post, d => setDistance(d));
 
@@ -43,20 +44,28 @@ const Post = ({ post, removePost, postID }) => {
             <label className="text-button" htmlFor={`post-checkbox` + postID}>
               מחיקה
             </label>
-          ) : distance && (
-            <div className="post__distance">
-              <span>{distance}</span>
-              ק"מ ממיקומך הנוכחי
-            </div>
+          ) : (
+            distance && (
+              <div className="post__distance">
+                <span>{distance}</span>
+                ק"מ ממיקומך הנוכחי
+              </div>
+            )
           )}
         </div>
 
-        <div className="post__content">
+        <div className="post__content small-margin-bottom">
           <div className="post__title">{post.title}</div>
           <div className="post__body tiny-margin-top">{post.body}</div>
         </div>
 
-        
+        {isNumberVisible ? (
+          post.phone_number
+        ) : currentUser ? (
+          <div  className="post__number" onClick={() => setIsNumberVisible(true)}>הצג מספר טלפון</div>
+        ) : (
+          <a href="#sign-up" className="post__number">הצג מספר טלפון</a>
+        )}
       </span>
 
       <span className="post__hidden">

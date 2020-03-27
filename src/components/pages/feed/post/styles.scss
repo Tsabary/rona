@@ -15,6 +15,13 @@
     color: $mainColorBlack;
   }
 
+  &__number{
+    color: $grey;
+    &:hover{
+      color: $mainColor;
+    }
+  }
+
   &__body {
     color: $grey;
   }
