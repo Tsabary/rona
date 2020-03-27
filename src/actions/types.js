@@ -6,3 +6,4 @@ export const DELETE_POST = "DELETE_POST";
 
 export const FETCH_MY_POSTS = "FETCH_MY_POSTS";
 export const DELETE_MY_POST = "DELETE_MY_POST";
+export const TOGGLE_POPUP = "TOGGLE_POPUP";
