@@ -26,7 +26,7 @@ const Feed = ({
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    if (currentUserProfile)
+    if (currentUserProfile && currentUserProfile.address_coords)
       changeAddress({
         text: currentUserProfile.address_text,
         coords: [
