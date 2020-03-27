@@ -35,16 +35,16 @@ const Feed = ({
       },
       fail => {
         if (currentUserProfile && currentUserProfile.address_coords)
-        changeAddress({
-          text: currentUserProfile.address_text,
-          coords: [
-            currentUserProfile.address_coords.latitude,
-            currentUserProfile.address_coords.longitude
-          ]
-        });      }
+          changeAddress({
+            text: currentUserProfile.address_text,
+            coords: [
+              currentUserProfile.address_coords.latitude,
+              currentUserProfile.address_coords.longitude
+            ]
+          });
+      }
     );
   }, [currentUserProfile]);
-
 
   useEffect(() => {
     index
