@@ -37,7 +37,7 @@ const Feed = ({
   }, [currentUserProfile]);
 
   useEffect(() => {
-    console.log(address)
+    console.log(address);
     index
       .search("", {
         aroundLatLng: `${address.coords[0]}, ${address.coords[1]}`,
@@ -53,7 +53,6 @@ const Feed = ({
   }, []);
 
   const renderItems = posts => {
-    console.log("re renderrr")
     return posts.map(post => {
       return <Post post={post} postID={post.objectID} key={post.objectID} />;
     });
@@ -72,13 +71,7 @@ const Feed = ({
         בקשת עזרה
       </a>
 
-      {!!posts.length ? (
-        renderItems(posts)
-      ) : (
-        <div className="empty-feed small-margin-top centered">
-          Nothing to see here
-        </div>
-      )}
+      {!!posts.length ? renderItems(posts) : null}
     </div>
   );
 };
