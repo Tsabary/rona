@@ -3,12 +3,13 @@
 .feed {
   @include padding;
   position: relative;
+
 }
 
 .post-button {
   position: fixed;
   bottom: 5rem;
-  right: 5rem;
+  right: 10rem;
   z-index: 2000;
   background: $gradientColor;
 
@@ -16,8 +17,24 @@
   padding: 1.5rem 2.5rem;
   color: white;
   border-radius: $borderRadius;
-  transition: all .15s;
+  transition: all 0.15s;
   box-shadow: 0 0.2rem 1rem rgb(170, 170, 170);
+
+  @include resize(800px) {
+    right: 8rem;
+  }
+
+  @include resize(700px) {
+    right: 6rem;
+  }
+
+  @include resize(600px) {
+    right: 5rem;
+  }
+
+  @include resize(500px) {
+    right: 4rem;
+  }
 
   &:hover {
     transform: translateY(-0.2rem);

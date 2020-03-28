@@ -3,6 +3,23 @@
 .user-options {
   position: relative;
 
+  &__container-full {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 2rem;
+    // @include resize(500px) {
+    //   display: none;
+    // }
+  }
+
+  &__container-lean {
+    display: none;
+    grid-template-columns: max-content;
+    // @include resize(500px) {
+    //   display: grid;
+    // }
+  }
+
   &:hover .user-options__options {
     opacity: 1;
     visibility: visible;
@@ -40,6 +57,9 @@
     // margin: auto;
     transition: all 0.1s;
     user-select: none;
+    @include resize(500px) {
+      // display: none;
+    }
   }
   &__option {
     margin-top: 1rem;
@@ -55,7 +75,6 @@
       opacity: 1;
       visibility: visible;
       color: $mainColor;
-
     }
   }
 

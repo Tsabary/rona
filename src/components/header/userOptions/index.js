@@ -24,7 +24,7 @@ const UserOptions = ({ logOut, resendVerification }) => {
 
   return (
     <div className="user-options ">
-      <div className="max-max">
+      <div className="user-options__container-full">
         <div className="user-options__name">
           {!!currentUserProfile ? currentUserProfile.name : currentUser.email}
         </div>
@@ -38,6 +38,20 @@ const UserOptions = ({ logOut, resendVerification }) => {
           />
         </div>
       </div>
+
+
+      <div className="user-options__container-lean">
+        <div className="user-options__image-container ">
+          <img
+            className="user-options__image"
+            src={
+              (currentUserProfile && currentUserProfile.avatar) ||
+              "../../../imgs/logo.jpeg"
+            }
+          />
+        </div>
+      </div>
+
       <div className="user-options__options">
         <a className="user-options__option" href="#update-profile">
           <TextButton text="פרופיל" />

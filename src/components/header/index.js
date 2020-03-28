@@ -2,10 +2,11 @@ import "./styles.scss";
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import { ReactSVG } from "react-svg";
+
 import history from "../../history";
 
 import { setCurrentPage } from "../../actions";
-
 
 import { AuthContext } from "../../providers/Auth";
 import AuthOptions from "./authOptions";
@@ -35,11 +36,20 @@ const Header = ({ setCurrentPage }) => {
 
   return (
     <div className="header">
+      <div className="header-with-logo">
         <div className="header__logo-container" onClick={handleChange}>
+
           <div className="header__title">Rona</div>
         </div>
-      <AddressOptions/> 
-      <div className="header__auth">{renderAuth()}</div>
+        <AddressOptions />
+        <div className="header__auth">{renderAuth()}</div>
+      </div>
+
+      <div className="header-without-logo">
+      <AddressOptions />
+        <div className="header__auth">{renderAuth()}</div>
+      </div>
+
     </div>
   );
 };
