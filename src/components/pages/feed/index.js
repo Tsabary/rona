@@ -3,8 +3,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { connect } from "react-redux";
 
 import algoliasearch from "algoliasearch/lite";
-import { InstantSearch } from "react-instantsearch-dom";
-
+import Translate from 'translate-components';
 import { AuthContext } from "../../../providers/Auth";
 import { fetchAllPosts, togglePopup, changeAddress } from "../../../actions";
 import Post from "./post";
@@ -77,7 +76,7 @@ const Feed = ({
           currentUser && currentUser.emailVerified ? "#new-request" : "#sign-up"
         }
       >
-        בקשת עזרה
+       <Translate>helpRequest</Translate>
       </a>
 
       {!!posts.length ? renderItems(posts) : null}

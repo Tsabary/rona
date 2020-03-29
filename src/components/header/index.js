@@ -12,7 +12,8 @@ import { AuthContext } from "../../providers/Auth";
 import AuthOptions from "./authOptions";
 import UserOptions from "./userOptions";
 import AddressOptions from "./addressOptions";
-
+import LangOptions from "./langOptions";
+import logo from './logo.jpeg'
 const Header = ({ setCurrentPage }) => {
   const { currentUser } = useContext(AuthContext);
   const myHistory = useHistory(history);
@@ -38,15 +39,17 @@ const Header = ({ setCurrentPage }) => {
     <div className="header">
       <div className="header-with-logo">
         <div className="header__logo-container" onClick={handleChange}>
-
-          <div className="header__title">Rona</div>
+          <div className="header__title">
+            <img src={logo} />
+          </div>
+          <LangOptions/>
         </div>
-        <AddressOptions />
+        <AddressOptions address={''}/>
         <div className="header__auth">{renderAuth()}</div>
       </div>
 
       <div className="header-without-logo">
-      <AddressOptions />
+        <AddressOptions address={''}/>
         <div className="header__auth">{renderAuth()}</div>
       </div>
 

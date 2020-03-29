@@ -1,6 +1,7 @@
 import "./styles.scss";
 import React, { useContext, useState } from "react";
 import Moment from "react-moment";
+import Translate from 'translate-components';
 import "moment/locale/he";
 
 import { connect } from "react-redux";
@@ -33,7 +34,7 @@ const Post = ({ post, removePost, postID }) => {
             />
           </div>
           <div>
-            <div className="post__author-name">{post.user_name}</div>
+            <span className="post__author-name">{post.user_name}</span>
             <span className="post__timestamp">
               <Moment fromNow locale="he">
                 {post.timestamp}
@@ -62,9 +63,9 @@ const Post = ({ post, removePost, postID }) => {
         {isNumberVisible ? (
           post.phone_number
         ) : currentUser ? (
-          <div  className="post__number" onClick={() => setIsNumberVisible(true)}>הצג מספר טלפון</div>
+          <div  className="post__number" onClick={() => setIsNumberVisible(true)}><Translate>showPhoneNum</Translate></div>
         ) : (
-          <a href="#sign-up" className="post__number">הצג מספר טלפון</a>
+          <a href="#sign-up" className="post__number"><Translate>showPhoneNum</Translate></a>
         )}
       </span>
 

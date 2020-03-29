@@ -43,7 +43,9 @@
     color: $grey;
   }
   &__author-name {
-    color: $grey;
+    color: $greyDark;
+    font-weight: bold;
+    margin-left: 10px;
   }
   &__content{
     // background-color: $greyLightest;

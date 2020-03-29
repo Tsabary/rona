@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { useToasts } from "react-toast-notifications";
 import firebase from "firebase";
-
+import Translate from 'translate-components';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -67,9 +67,10 @@ const NewRequest = ({ newRequest, togglePopup }) => {
           <div />
           סגירה
         </a>
-        <div className="popup__title">בקשה חדשה</div>
+        <div className="popup__title"><Translate>newRequest</Translate></div>
         <form
           onSubmit={e => {
+            e.preventDefault();
             if (!e.target.checkValidity()) {
               return;
             }
