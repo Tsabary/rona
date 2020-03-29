@@ -5,9 +5,9 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import InputField from "../../formComponents/inputField";
-import { signUp, providerSignIn } from "../../../actions";
+import { signUp, providerSignIn, togglePopup } from "../../../actions";
 
-const SignUp = ({ signUp, providerSignIn }) => {
+const SignUp = ({ signUp, providerSignIn, togglePopup }) => {
   const [values, setValues] = useState({});
   const [submitting, setSubmitting] = useState(0);
   const [formError, setFormError] = useState("");
@@ -30,6 +30,7 @@ const SignUp = ({ signUp, providerSignIn }) => {
               <div
                 className="auth__button auth__button--google  small-margin-top"
                 onClick={() => {
+                  togglePopup();
                   providerSignIn("google");
                 }}
               >
@@ -38,6 +39,7 @@ const SignUp = ({ signUp, providerSignIn }) => {
               <div
                 className="auth__button auth__button--facebook small-margin-top"
                 onClick={() => {
+                  togglePopup();
                   providerSignIn("facebook");
                 }}
               >
@@ -76,7 +78,7 @@ const SignUp = ({ signUp, providerSignIn }) => {
   return (
     <div className="popup" id="sign-up">
       <div className="popup__container">
-        <a className="popup__close" href="#">
+        <a className="popup__close" href="#" onClick={togglePopup}>
           <div />
           סגירה
         </a>
@@ -86,4 +88,4 @@ const SignUp = ({ signUp, providerSignIn }) => {
   );
 };
 
-export default connect(null, { signUp, providerSignIn })(SignUp);
+export default connect(null, { signUp, providerSignIn, togglePopup })(SignUp);
