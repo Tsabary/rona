@@ -16,6 +16,8 @@ import { newRequest, togglePopup } from "../../../actions";
 
 import InputField from "../../formComponents/inputField";
 import TextArea from "../../formComponents/textArea";
+import BoxedButton from "../../formComponents/boxedButton";
+
 
 const NewRequest = ({ newRequest, togglePopup }) => {
   const [values, setValues] = useState({ title: "אני צריך עזרה ב" });
@@ -163,9 +165,9 @@ const NewRequest = ({ newRequest, togglePopup }) => {
             pattern={"[0-9]{10}"}
           />
           <div className="popup__button medium-margin-top">
-            <button type="submit" className="boxed-button">
+            <BoxedButton>
               שליחה
-            </button>
+            </BoxedButton>
           </div>
         </form>
       </div>
