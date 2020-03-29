@@ -70,6 +70,7 @@ const NewRequest = ({ newRequest, togglePopup }) => {
         <div className="popup__title"><Translate>newRequest</Translate></div>
         <form
           onSubmit={e => {
+            e.preventDefault();
             if (!e.target.checkValidity()) {
               return;
             }
