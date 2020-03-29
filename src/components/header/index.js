@@ -41,12 +41,12 @@ const Header = ({ setCurrentPage }) => {
 
           <div className="header__title">Rona</div>
         </div>
-        <AddressOptions />
+        <AddressOptions address={''}/>
         <div className="header__auth">{renderAuth()}</div>
       </div>
 
       <div className="header-without-logo">
-      <AddressOptions />
+        <AddressOptions address={''}/>
         <div className="header__auth">{renderAuth()}</div>
       </div>
 

@@ -33,7 +33,7 @@ const Post = ({ post, removePost, postID }) => {
             />
           </div>
           <div>
-            <div className="post__author-name">{post.user_name}</div>
+            <span className="post__author-name">{post.user_name}</span>
             <span className="post__timestamp">
               <Moment fromNow locale="he">
                 {post.timestamp}
