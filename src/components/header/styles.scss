@@ -7,7 +7,7 @@
   width: 100%;
   padding: 5rem 10rem;
   margin-bottom: 5rem;
-
+  
   &-with-logo{
     // width: 100%;
     display: grid;
@@ -76,8 +76,13 @@
     font-size: 4rem;
     text-align: center;
     color: $mainColorBlack;
-    margin-top: 1rem;
     transition: all 0.2s;
+
+
+
+    img {
+      height: 6rem;
+    }
 
     @include resize(700px) {
       display: none;
