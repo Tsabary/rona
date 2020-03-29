@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../firebase";
 import ReactGA from 'react-ga';
+import Modal from '../components/popups/modal';
 const db = firebase.firestore();
 
 
@@ -14,11 +15,14 @@ ReactGA.initialize(process.env.GA);
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
+  const [modalShown, setModal] = useState(false);
+  const toggleModal = () => setModal(!modalShown);
   firebase.auth().onAuthStateChanged(setCurrentUser);
 
   useEffect(() => {
     if (currentUser) {
-
+      
+      setModal(true);
      // GA
      ReactGA.set({
       userId: currentUser.uid,
@@ -49,6 +53,22 @@ export const AuthProvider = ({ children }) => {
         setCurrentUserProfile
       }}
     >
+      {modalShown ? (
+      <Modal>   
+        <header>
+          <h4>Please Note</h4>
+        </header>
+        <main className="modal-body">
+        
+במהלך מתן או קבלת עזרה אנא שימרו בקפידה על הוראות משרד הבריאות כפי שמפורסמות
+<a href=" https://www.health.gov.il/Subjects/disease/corona/Pages/default.aspx ">באתר משרד הבריאות</a>למען שמירה על בריאותכם ובריאות הציבור. 
+
+
+        </main>
+        <footer>
+          <button className="primary-btn" onClick={toggleModal}>OK</button>
+        </footer>
+      </Modal>) : null}
       {children}
     </AuthContext.Provider>
   );
