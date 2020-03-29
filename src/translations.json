@@ -1,0 +1,34 @@
+{
+    "signIn": {
+      "he": "התחברות",
+      "en": "sign in"
+    },
+    "helpRequest": {
+      "he": "בקשת עזרה",
+      "en": "help request"
+    },
+    "showPhoneNum": {
+      "he": "הצג מספר טלפון",
+      "en": "show phone number"
+    },
+    "newRequest": {
+      "he": "בקשה חדשה",
+      "en": "New Request" 
+    },
+    "profile": {
+      "he": "פרופיל",
+      "en": "profile"       
+    },
+    "myPosts": {
+      "he": "פרוסמים שלי",
+      "en": "my posts"       
+    },
+    "contact": {
+      "he": "יצירת קשר",
+      "en": "contact"       
+    },
+    "signout": {
+      "he": "התנתקות",
+      "en": "sign out"       
+    }
+  }

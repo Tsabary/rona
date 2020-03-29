@@ -12,6 +12,7 @@ import { AuthContext } from "../../providers/Auth";
 import AuthOptions from "./authOptions";
 import UserOptions from "./userOptions";
 import AddressOptions from "./addressOptions";
+import LangOptions from "./langOptions";
 
 const Header = ({ setCurrentPage }) => {
   const { currentUser } = useContext(AuthContext);
@@ -38,8 +39,8 @@ const Header = ({ setCurrentPage }) => {
     <div className="header">
       <div className="header-with-logo">
         <div className="header__logo-container" onClick={handleChange}>
-
           <div className="header__title">Rona</div>
+          <LangOptions/>
         </div>
         <AddressOptions address={''}/>
         <div className="header__auth">{renderAuth()}</div>

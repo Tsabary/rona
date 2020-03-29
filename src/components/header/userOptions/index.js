@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/Auth";
 
 import { logOut, resendVerification } from "../../../actions";
-
+import Translate from 'translate-components';
 import TextButton from "../../formComponents/textButton";
 
 const UserOptions = ({ logOut, resendVerification }) => {
@@ -54,19 +54,23 @@ const UserOptions = ({ logOut, resendVerification }) => {
 
       <div className="user-options__options">
         <a className="user-options__option" href="#update-profile">
-          <TextButton text="פרופיל" />
+          <TextButton>
+             <Translate>profile</Translate>
+          </TextButton>
         </a>
 
         <Link className="user-options__option" to="/my-posts">
-          הפרסומים שלי
+           <Translate>myPosts</Translate>
         </Link>
 
         <Link className="user-options__option" to="/contact">
-          יצירת קשר
+           <Translate>contact</Translate>
         </Link>
 
         <div className="user-options__option" onClick={() => logOut()}>
-          <TextButton text="התנתקות" />
+          <TextButton>
+            <Translate>signout</Translate>
+          </TextButton>
         </div>
       </div>
     </div>

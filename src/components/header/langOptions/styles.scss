@@ -1,0 +1,27 @@
+.lang-options {
+    position: relative;
+
+    .lang-drop-menu {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        background: #fff;
+        padding: 1.5rem;
+        box-shadow: 0 0.4rem 1.4rem #d2d2d2;
+        button {
+            border: none;
+            padding: 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+            background: #fff;
+            &:hover{
+                background: #adabab;
+            }
+        }
+    }
+
+    &:hover .lang-drop-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+}
