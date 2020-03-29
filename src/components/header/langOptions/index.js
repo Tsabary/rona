@@ -1,21 +1,28 @@
 import "./styles.scss";
-import React, {useState} from "react";
+import React, {useContext} from "react";
 
-import TextButton from "../../formComponents/textButton";
-import {reactTranslateChangeLanguage} from 'translate-components'
+import {reactTranslateChangeLanguage} from 'translate-components';
+import { AuthContext } from "../../../providers/Auth";
 
 const LangOptions = () => {
-  const [currLang, setCurrLang] = useState('he');
+  const { lang, setLang } = useContext(AuthContext);
+  const changeLang = lng => { 
+    reactTranslateChangeLanguage(lng);
+    setLang(lng);
+  }
   return (
     <div className="lang-options">
-      {currLang}
+      {lang}
       <div className="lang-drop-menu">
-          <button onClick={() => { reactTranslateChangeLanguage('he'); setCurrLang('he'); }}>
+          <button onClick={() => changeLang('he')}>
             He
           </button>
-          <button onClick={() => { reactTranslateChangeLanguage('en'); setCurrLang('en'); }}>
+          <button onClick={() => changeLang('en')}>
             En
           </button>
+          <button onClick={() => changeLang('ru')}>
+            Ru
+          </button>          
       </div>
     </div>
   );

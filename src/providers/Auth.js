@@ -14,6 +14,7 @@ ReactGA.initialize(process.env.GA);
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [lang, setLang] = useState('he');
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
   const [modalShown, setModal] = useState(false);
   const toggleModal = () => setModal(!modalShown);
@@ -50,6 +51,8 @@ export const AuthProvider = ({ children }) => {
       value={{
         currentUser,
         currentUserProfile,
+        lang,
+        setLang,
         setCurrentUserProfile
       }}
     >

@@ -1,34 +1,47 @@
 {
     "signIn": {
       "he": "התחברות",
-      "en": "sign in"
+      "en": "sign in",
+      "ru": "зайти"
     },
     "helpRequest": {
       "he": "בקשת עזרה",
-      "en": "help request"
+      "en": "help request",
+      "ru": "просьба о помощи"
     },
     "showPhoneNum": {
       "he": "הצג מספר טלפון",
-      "en": "show phone number"
+      "en": "show phone number",
+      "ru": "открыть телефонный номер"
     },
     "newRequest": {
       "he": "בקשה חדשה",
-      "en": "New Request" 
+      "en": "New Request",
+      "ru": "новая просьба"
     },
     "profile": {
       "he": "פרופיל",
-      "en": "profile"       
+      "en": "profile" ,
+      "ru": "профиль"      
     },
     "myPosts": {
       "he": "פרוסמים שלי",
-      "en": "my posts"       
+      "en": "my posts" ,
+      "ru": "мои просьбы"      
     },
     "contact": {
       "he": "יצירת קשר",
-      "en": "contact"       
+      "en": "contact",
+      "ru": "контакт"
     },
     "signout": {
       "he": "התנתקות",
-      "en": "sign out"       
+      "en": "sign out",
+      "ru" :"выйти" 
+    },
+    "fromYourLocation": {
+      "he": "ק''מ ממיקומך הנוכחי",
+      "en": "km from your current location",
+      "ru" :"км от вашего местонахождения"       
     }
   }

@@ -1,4 +1,4 @@
-
+@import "../../../styles/imports";
 #modal {
     background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -56,10 +56,12 @@
        footer {
         padding: 15px;
         button {
-            background: linear-gradient(#0099ff, #006bb3);
+            background: $gradientColor;
             padding: 1.5rem 2.5rem;
             color: white;
             border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
         }
     }
   }
