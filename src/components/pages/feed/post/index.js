@@ -2,6 +2,7 @@ import "./styles.scss";
 import React, { useContext, useState } from "react";
 import Moment from "react-moment";
 import Translate from 'translate-components';
+import "moment/locale/ru";
 import "moment/locale/he";
 
 import { connect } from "react-redux";
@@ -12,7 +13,7 @@ import { removePost } from "../../../../actions";
 import { calcGeoDistance } from "../../../../utils";
 
 const Post = ({ post, removePost, postID }) => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, lang } = useContext(AuthContext);
   const [distance, setDistance] = useState(null);
   const [isNumberVisible, setIsNumberVisible] = useState(false);
 
@@ -36,7 +37,7 @@ const Post = ({ post, removePost, postID }) => {
           <div>
             <span className="post__author-name">{post.user_name}</span>
             <span className="post__timestamp">
-              <Moment fromNow locale="he">
+              <Moment fromNow locale={lang}>
                 {post.timestamp}
               </Moment>
             </span>
@@ -49,7 +50,7 @@ const Post = ({ post, removePost, postID }) => {
             distance && (
               <div className="post__distance">
                 <span>{distance}</span>
-                ק"מ ממיקומך הנוכחי
+               <Translate>fromYourLocation</Translate>
               </div>
             )
           )}

@@ -26,11 +26,18 @@ const Feed = ({
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      success => {
-        changeAddress({
-          text: "Your current location",
-          coords: [success.coords.latitude, success.coords.longitude]
+      ({coords: {latitude: lat, longitude: lng}}) => {
+       
+        var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true&key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries`;
+        fetch(url).then(d => d.json()).then(data => {
+            let addr = data.results &&  data.results.length ? data.results[0].formatted_address : '';
+            changeAddress({
+              text: addr,
+              coords: [lat, lng]
+            });  
+
         });
+
       },
       fail => {
         if (currentUserProfile && currentUserProfile.address_coords)

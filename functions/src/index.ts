@@ -41,7 +41,6 @@ exports.userCreated = functions.auth.user().onCreate(user => {
         name: user.providerData[0].displayName
           ? user.providerData[0].displayName.split(" ")[0]
           : "",
-        avatar: user.providerData[0].photoURL,
         email: user.email
       })
     );
