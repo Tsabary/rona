@@ -43,5 +43,10 @@
       "he": "ק''מ ממיקומך הנוכחי",
       "en": "km from your current location",
       "ru" :"км от вашего местонахождения"       
+    },
+    "signupSignin": {
+      "he": "הרשמה / התחברות",
+      "en": "signup / signin",
+      "ru" :"вход / регистрация"
     }
   }
