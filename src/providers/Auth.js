@@ -8,7 +8,7 @@ const db = firebase.firestore();
 export const AuthContext = React.createContext();
 
 
-ReactGA.initialize(process.env.GA);
+ReactGA.initialize(process.env.REACT_APP_GA);
 
 
 
@@ -61,12 +61,12 @@ export const AuthProvider = ({ children }) => {
         <header>
           <h4>Please Note</h4>
         </header>
-        <main className="modal-body">
-        
-במהלך מתן או קבלת עזרה אנא שימרו בקפידה על הוראות משרד הבריאות כפי שמפורסמות
-<a href=" https://www.health.gov.il/Subjects/disease/corona/Pages/default.aspx ">באתר משרד הבריאות</a>למען שמירה על בריאותכם ובריאות הציבור. 
-
-
+        <main className="modal-body">        
+           במהלך מתן או קבלת עזרה אנא שימרו בקפידה על הוראות משרד הבריאות כפי שמפורסמות
+           <a href="https://www.health.gov.il/Subjects/disease/corona/Pages/default.aspx ">
+             באתר משרד הבריאות
+           </a>
+           למען שמירה על בריאותכם ובריאות הציבור.
         </main>
         <footer>
           <button className="primary-btn" onClick={toggleModal}>OK</button>
