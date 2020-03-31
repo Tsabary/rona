@@ -227,7 +227,7 @@ h3 {
   margin: 8rem auto;
   left: 0;
   right: 0;
-
+  z-index: 1000;
   @include resize(800px) {
     max-width: 80%;
   }
