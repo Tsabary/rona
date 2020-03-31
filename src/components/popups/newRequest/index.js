@@ -63,7 +63,7 @@ const NewRequest = ({ newRequest, togglePopup }) => {
   return (
     <div className="popup" id="new-request">
       <div className="popup__container">
-        <a className="popup__close" href="#" onClick={togglePopup}>
+        <a className="popup__close" href="#">
           <div />
           סגירה
         </a>
