@@ -75,7 +75,16 @@ const NewRequest = ({ newRequest, togglePopup }) => {
               return;
             }
 
-            newRequest(values, () => {
+            newRequest(values, err => {
+              if (err) {
+                addToast(`error occurred: ${err}`, {
+                  appearance: "error",
+                  autoDismiss: true
+                }); 
+                return;  
+              }
+        
+
               addToast("בקשה נשלחה", {
                 appearance: "success",
                 autoDismiss: true
