@@ -31,7 +31,6 @@ const NewRequest = ({ newRequest, togglePopup }) => {
       setValues({
         user_ID: currentUserProfile.uid,
         user_name: currentUserProfile.name,
-        user_avatar: currentUserProfile.avatar,
         address_text: currentUserProfile.address_text,
         address_coords: currentUserProfile.address_coords,
         phone_number: currentUserProfile.phone_number,
