@@ -76,8 +76,7 @@ const Feed = ({
   return (
     <div className="feed">
       <a
-        style={{ display: popupShown ? "none" : "" }}
-        onClick={togglePopup}
+        style={{ display: popupShown ? "none" : "" }}        
         className="post-button"
         href={
           currentUser && currentUser.emailVerified ? "#new-request" : "#sign-up"
