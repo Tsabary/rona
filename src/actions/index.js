@@ -94,6 +94,7 @@ export const newRequest = (values, reset) => dispatch => {
       });
     })
     .catch(error => {
+      reset(error);
       console.log(`Error: while adding document:${error}`);
       throw new Error(`Error: while adding document:${error}`); // throw an Error
     });
