@@ -80,7 +80,6 @@ const NewRequest = ({ newRequest, togglePopup }) => {
                 appearance: "success",
                 autoDismiss: true
               });
-              togglePopup()
               setValues({ ...values, title: "אני צריך עזרה עם", body: "" });
             });
           }}

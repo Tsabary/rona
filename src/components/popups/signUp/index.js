@@ -30,7 +30,6 @@ const SignUp = ({ signUp, providerSignIn, togglePopup }) => {
               <div
                 className="auth__button auth__button--google  small-margin-top"
                 onClick={() => {
-                  togglePopup();
                   providerSignIn("google");
                 }}
               >
@@ -39,7 +38,6 @@ const SignUp = ({ signUp, providerSignIn, togglePopup }) => {
               <div
                 className="auth__button auth__button--facebook small-margin-top"
                 onClick={() => {
-                  togglePopup();
                   providerSignIn("facebook");
                 }}
               >
@@ -78,7 +76,7 @@ const SignUp = ({ signUp, providerSignIn, togglePopup }) => {
   return (
     <div className="popup" id="sign-up">
       <div className="popup__container">
-        <a className="popup__close" href="#" onClick={togglePopup}>
+        <a className="popup__close" href="#">
           <div />
           סגירה
         </a>
