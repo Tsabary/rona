@@ -7,7 +7,7 @@ import { changeAddress } from "../../../actions";
 import { connect } from "react-redux";
 
 const AddressOptions = ({ address, changeAddress }) => {
-  const [locAddr, setLocAddr] = useState(null);
+  const [locAddr, setLocAddr] = useState('');
 
   useEffect(() => {
     setLocAddr(address.text);
