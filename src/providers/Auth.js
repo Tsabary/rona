@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../firebase";
-import ReactGA from 'react-ga';
+//import ReactGA from 'react-ga';
 import Modal from '../components/popups/modal';
 const db = firebase.firestore();
 
@@ -8,9 +8,9 @@ const db = firebase.firestore();
 export const AuthContext = React.createContext();
 
 
-ReactGA.initialize(process.env.REACT_APP_GA);
+//ReactGA.initialize(process.env.REACT_APP_GA);
 
-ReactGA.pageview(window.location.pathname + window.location.search);
+//ReactGA.pageview(window.location.pathname + window.location.search);
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -25,11 +25,11 @@ export const AuthProvider = ({ children }) => {
       firebase.analytics().logEvent('user_authenticated');
       setModal(true);
      // GA
-     ReactGA.set({
-      userId: currentUser.uid,
+    // ReactGA.set({
+     // userId: currentUser.uid,
       // any data that is relevant to the user session
       // that you would like to track with google analytics
-     })
+    // })
 
 
 
