@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (currentUser) {
-      
+      firebase.analytics().logEvent('user_authenticated');
       setModal(true);
      // GA
      ReactGA.set({
