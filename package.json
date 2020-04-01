@@ -24,7 +24,7 @@
     "draft-js-plugins-editor": "^3.0.0",
     "draft-js-side-toolbar-plugin": "^3.0.2",
     "draft-js-undo-plugin": "^2.0.3",
-    "firebase": "^7.8.0",
+    "firebase": "^7.13.1",
     "js-cookie": "^2.2.1",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",

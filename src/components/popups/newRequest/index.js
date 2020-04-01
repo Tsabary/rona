@@ -3,7 +3,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { useToasts } from "react-toast-notifications";
-import firebase from "firebase";
+import firebase from "firebase/app";
+
+
 import Translate from 'translate-components';
 import PlacesAutocomplete, {
   geocodeByAddress,

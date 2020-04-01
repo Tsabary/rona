@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../firebase";
+import  'firebase/firestore';
+import  'firebase/auth';
 //import ReactGA from 'react-ga';
 import Modal from '../components/popups/modal';
 const db = firebase.firestore();

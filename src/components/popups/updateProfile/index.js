@@ -2,7 +2,7 @@ import "./styles.scss";
 import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 import PlacesAutocomplete, {
   geocodeByAddress,

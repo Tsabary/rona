@@ -10,7 +10,8 @@ import {
   TOGGLE_POPUP,
   CHANGE_ADDRESS
 } from "./types";
-
+import 'firebase/firestore';
+import 'firebase/storage';
 const db = firebase.firestore();
 const storageRef = firebase.storage().ref();
 
