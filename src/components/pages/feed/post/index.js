@@ -30,6 +30,7 @@ const Post = ({ post, removePost, postID }) => {
         <div className="max-fr-max tiny-margin-bottom">
           <div className="round-image__container round-image__container--small">
             <img
+              alt={post.user_name}
               className="round-image"
               src={`https://api.adorable.io/avatars/285/${post.user_ID}.png`}
             />

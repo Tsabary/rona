@@ -2,11 +2,9 @@ import firebase from "../firebase";
 import {
   FETCH_POSTS,
   FETCH_SINGLE,
-  NEW_POST,
   DELETE_POST,
   SET_PAGE,
   FETCH_MY_POSTS,
-  DELETE_MY_POST,
   TOGGLE_POPUP,
   CHANGE_ADDRESS
 } from "./types";

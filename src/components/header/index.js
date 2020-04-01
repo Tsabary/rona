@@ -2,7 +2,6 @@ import "./styles.scss";
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { ReactSVG } from "react-svg";
 
 import history from "../../history";
 

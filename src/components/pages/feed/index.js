@@ -50,7 +50,7 @@ const Feed = ({
           });
       }
     );
-  }, [currentUserProfile]);
+  }, [currentUserProfile, changeAddress]);
 
   useEffect(() => {
     index

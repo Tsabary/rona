@@ -11,7 +11,7 @@ const MyPosts = ({ myPosts, fetchMyPosts }) => {
 
   useEffect(() => {
     if (currentUser) fetchMyPosts(currentUser.uid);
-  }, [currentUser]);
+  }, [currentUser, fetchMyPosts]);
 
   const renderItems = () => {
     return myPosts.map(post => {
