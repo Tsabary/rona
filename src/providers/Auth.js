@@ -10,10 +10,6 @@ const db = firebase.firestore();
 export const AuthContext = React.createContext();
 
 
-//ReactGA.initialize(process.env.REACT_APP_GA);
-
-//ReactGA.pageview(window.location.pathname + window.location.search);
-
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [lang, setLang] = useState('he');
@@ -26,13 +22,6 @@ export const AuthProvider = ({ children }) => {
     if (currentUser) {
       firebase.analytics().logEvent('user_authenticated');
       setModal(true);
-     // GA
-    // ReactGA.set({
-     // userId: currentUser.uid,
-      // any data that is relevant to the user session
-      // that you would like to track with google analytics
-    // })
-
 
 
       db.collection("users")
