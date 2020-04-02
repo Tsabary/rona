@@ -39,7 +39,7 @@ const Header = ({ setCurrentPage }) => {
       <div className="header-with-logo">
         <div className="header__logo-container" onClick={handleChange}>
           <div className="header__title">
-            <img src={logo} />
+            <img alt={'logo'} src={logo} />
           </div>
           <LangOptions/>
         </div>

@@ -14,7 +14,6 @@ import { AuthContext } from "../../../providers/Auth";
 import { updateProfile } from "../../../actions";
 
 import InputField from "../../formComponents/inputField";
-import TextArea from "../../formComponents/textArea";
 
 
 const UpdateProfile = ({ updateProfile }) => {
@@ -22,17 +21,11 @@ const UpdateProfile = ({ updateProfile }) => {
   const { currentUserProfile, setCurrentUserProfile, currentUser } = useContext(
     AuthContext
   );
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageObj, setImageObj] = useState(null);
+  const [selectedImage] = useState(null);
+  const [imageObj] = useState(null);
   const [address, setAddress] = useState(null);
 
-  const handleImageChange = e => {
-    if (e.target.files[0]) {
-      const image = e.target.files[0];
-      setSelectedImage(URL.createObjectURL(image));
-      setImageObj(image);
-    }
-  };
+
 
   const handleSelect = address => {
     setValues({ ...values, address });
@@ -76,24 +69,7 @@ const UpdateProfile = ({ updateProfile }) => {
             )
           }
         >
-          {/* <label htmlFor="update-profile-image" className="new-event__label">
-            <div className="round-image__container round-image__container--profile-form">
-              <img
-                className="round-image clickable"
-                src={
-                  selectedImage ||
-                  (currentUserProfile && currentUserProfile.avatar) ||
-                  "../../imgs/logo.jpeg"
-                }
-              />
-            </div>
-          </label>
-          <input
-            id="update-profile-image"
-            className="update-profile__upload"
-            type="file"
-            onChange={handleImageChange}
-          /> */}
+         
 
           <InputField
             type="text"

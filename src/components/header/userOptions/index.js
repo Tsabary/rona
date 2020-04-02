@@ -11,7 +11,7 @@ import TextButton from "../../formComponents/textButton";
 
 const UserOptions = ({ logOut, resendVerification }) => {
   const { currentUserProfile, currentUser } = useContext(AuthContext);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [, setIsAdmin] = useState(false);
 
   useEffect(() => {
     if (
@@ -30,6 +30,7 @@ const UserOptions = ({ logOut, resendVerification }) => {
         </div>
         <div className="user-options__image-container ">
           <img
+            alt={'avatar'}
             className="user-options__image"
             src={
               (currentUserProfile && currentUserProfile.avatar) ||
@@ -43,6 +44,7 @@ const UserOptions = ({ logOut, resendVerification }) => {
       <div className="user-options__container-lean">
         <div className="user-options__image-container ">
           <img
+            alt={'avatar'}
             className="user-options__image"
             src={
               (currentUserProfile && currentUserProfile.avatar) ||
