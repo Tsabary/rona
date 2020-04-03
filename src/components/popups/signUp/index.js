@@ -69,6 +69,8 @@ const SignUp = ({ signUp, providerSignIn }) => {
 
       case 5:
         return <div>אופס, יש לנו כמה בעיות בחיבור כרגע.</div>;
+      default:
+        return <div/>
     }
   };
 
