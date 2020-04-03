@@ -65,7 +65,7 @@ const Feed = ({
 
   useEffect(() => {
     fetchAllPosts();
-  }, []);
+  }, [fetchAllPosts]);
 
   const renderItems = posts => {
     return posts.map(post => {
