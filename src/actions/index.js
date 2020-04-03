@@ -57,10 +57,12 @@ export const providerSignIn = provider => () => {
   var facebookProvider = new firebase.auth.FacebookAuthProvider();
   switch (provider) {
     case "google":
-      firebase.auth().signInWithPopup(googleProvider);
+      firebase.auth().signInWithRedirect(googleProvider) 
+      //firebase.auth().signInWithPopup(googleProvider);
       break;
     case "facebook":
       firebase.auth().signInWithPopup(facebookProvider);
+    //  firebase.auth().signInWithPopup(facebookProvider);
       break;
   }
 };
@@ -128,11 +130,6 @@ export const removePost = post => dispatch => {
   db.collection("posts")
     .doc(post.id)
     .delete();
-
-  // dispatch({
-  //   type: DELETE_MY_POST,
-  //   payload: post.id
-  // });
 
   dispatch({
     type: DELETE_POST,
