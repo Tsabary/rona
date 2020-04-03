@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-import InputField from "../../formComponents/inputField";
 import { signUp, providerSignIn, togglePopup } from "../../../actions";
 
 const SignUp = ({ signUp, providerSignIn }) => {
-  const [values, setValues] = useState({});
+  const [values] = useState({});
   const [submitting, setSubmitting] = useState(0);
   const [formError, setFormError] = useState("");
 
